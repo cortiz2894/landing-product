@@ -1,0 +1,67 @@
+{
+  "name": "portfolio-christian-ortiz",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.78.1",
+    "@react-three/fiber": "^8.13.4",
+    "@studio-freight/react-lenis": "^0.0.12",
+    "clsx": "^1.2.1",
+    "gsap": "^3.11.4",
+    "lodash.chunk": "^4.2.0",
+    "next": "13.2.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-fast-marquee": "^1.3.5",
+    "react-hook-form": "^7.43.8",
+    "react-ui-scrollspy": "^2.3.0",
+    "react-wrap-balancer": "^0.4.0",
+    "three": "^0.150.1",
+    "usehooks-ts": "^2.9.1",
+    "zustand": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "18.14.4",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "@types/three": "^0.149.0",
+    "eslint": "8.35.0",
+    "eslint-config-next": "13.2.3",
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "prettier": "^2.8.4",
+    "sass": "^1.58.3",
+    "typescript": "4.9.5"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "endOfLine": "auto",
+    "printWidth": 80,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "lint-staged": {
+    "*.json": [
+      "prettier --write"
+    ],
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ],
+    "*.{css,scss}": [
+      "prettier --write"
+    ]
+  },
+  "eslintConfig": {
+    "rules": {
+      "spaced-comment": "warn"
+    }
+  }
+}

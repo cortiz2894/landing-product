@@ -1,0 +1,31 @@
+.root {
+    background: black;
+
+    h1 {
+        text-align: center;
+        color: var(--white);
+        font-size: 128px;
+        margin-top: 125px;
+    }
+}
+
+.copy {
+    color: var(--white);
+    font-size: 40px;
+    line-height: 43px;
+    text-transform: uppercase;
+    margin-top: 240px;
+    margin-bottom: 240px;
+    letter-spacing: 2px;
+}
+
+.linewar {
+    width: 50%;
+}
+
+.description {
+    font-size: 32px;
+    line-height: 35.5px;
+    color: var(--white);
+    margin-bottom: 15px;
+}

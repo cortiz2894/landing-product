@@ -1,0 +1,62 @@
+// stylelint-disable at-rule-empty-line-before
+@use 'sass:math';
+
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1920px;
+
+// Mixins
+
+@mixin sm {
+  @media (min-width: $sm) {
+    @content;
+  }
+}
+@mixin md {
+  @media (min-width: $md) {
+    @content;
+  }
+}
+@mixin lg {
+  @media (min-width: $lg) {
+    @content;
+  }
+}
+@mixin xl {
+  @media (min-width: $xl) {
+    @content;
+  }
+}
+@mixin xxl {
+  @media (min-width: $xxl) {
+    @content;
+  }
+}
+
+@mixin sm-down {
+  @media (max-width: $sm) {
+    @content;
+  }
+}
+@mixin md-down {
+  @media (max-width: $md) {
+    @content;
+  }
+}
+@mixin lg-down {
+  @media (max-width: $lg) {
+    @content;
+  }
+}
+@mixin xl-down {
+  @media (max-width: $xl) {
+    @content;
+  }
+}
+@mixin xxl-down {
+  @media (max-width: $xxl) {
+    @content;
+  }
+}

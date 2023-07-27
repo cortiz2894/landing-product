@@ -1,0 +1,24 @@
+@import 'core';
+@import 'base';
+@import 'grid';
+@import 'utils';
+
+#__next > main {
+  min-height: 100vh;
+
+  @include md-down {
+    min-height: calc(100vh - 114px);
+  }
+}
+
+// https://github.com/studio-freight/lenis#considerations
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.active-scroll-spy {
+  font-weight: bold;
+}

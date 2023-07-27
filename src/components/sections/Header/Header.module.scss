@@ -1,0 +1,32 @@
+.root {
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+.logo {
+  & > a {
+    font-size: var(--size-xl);
+    line-height: max(0.7em, 54px + (100vw - 1440px) / 25);
+  }
+}
+
+.infoHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.copy {
+  font-size: var(--size-sm);
+  line-height: 13px;
+  text-transform: uppercase;
+  max-width: 60%;
+}
+
+.button {
+  font-size: var(--size-sm);
+  text-transform: uppercase;
+  border: 1px solid var(--black);
+  white-space: nowrap;
+  padding: 8px 16px;
+  line-height: 14px;
+  border-radius: 24px;
+}

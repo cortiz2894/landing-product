@@ -1,0 +1,31 @@
+.wrapper {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.content {
+  color: var(--white);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.inner {
+  max-width: 75%;
+  min-width: 20em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 3.55555em;
+}
+
+.scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}

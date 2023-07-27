@@ -1,0 +1,73 @@
+$curve: cubic-bezier(0.8, -0.01, 0.34, 1.01);
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+  background: none;
+
+  > span {
+    margin-right: 0.5em;
+  }
+
+  > [data-arrow],
+  > span {
+    transition: transform 0.5s $curve;
+  }
+
+  [data-arrow='1'] {
+    position: absolute;
+    left: 0;
+    transform: translateX(-1em);
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    > span,
+    > [data-arrow='2'] {
+      transform: translateX(1em);
+    }
+
+    > [data-arrow='1'] {
+      transform: translateX(0);
+    }
+  }
+}
+
+.block {
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 0.83333em;
+
+  &:before,
+  &:after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    position: absolute;
+    bottom: 0;
+  }
+
+  &:before {
+    opacity: 0.3;
+  }
+
+  &:after {
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.5s $curve;
+  }
+
+  &:hover {
+    &:after {
+      transform: scaleX(1);
+    }
+  }
+}
