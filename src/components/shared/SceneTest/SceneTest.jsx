@@ -1,10 +1,54 @@
-import { Canvas  , useThree, useFrame } from "@react-three/fiber";
-import { useGLTF, Environment, Center, OrbitControls } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useGLTF, Environment, OrbitControls, ScrollControls, useScroll } from "@react-three/drei";
+import React, { useRef, useLayoutEffect} from 'react'
+import gsap from "gsap";
+
+export const KEYBOARD_HEIGHT = 0.65
+export const NB_FLOORS = 2
 
 function SceneTest(props) {
   const { nodes, materials } = useGLTF("/keys_cleaner.glb");
+  const ref = useRef()
+  const keyboardRef = useRef()
+  const tl = useRef()
+ 
+  function getScrollPercent() {
+    var h = document.documentElement, 
+        b = document.body,
+        st = 'scrollTop',
+        sh = 'scrollHeight';
+    return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 2;
+  }
+  useFrame(()=> {
+    tl.current.seek(getScrollPercent() * tl.current.duration())    
+  })
+  
+  useLayoutEffect( () => {
+    tl.current = gsap.timeline()
+
+    // VERTICAL ANIMATION
+    tl.current.to(
+      ref.current.position, 
+      {
+        duration: 2,
+        y: KEYBOARD_HEIGHT * (NB_FLOORS -1),
+      },
+      0
+    )
+
+    tl.current.to(
+      keyboardRef.current.rotation,
+      {
+        duration: 2.3,
+        z: -Math.PI / 2.8
+      },
+      0
+    )
+  }, [])
+
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} ref={ref}>
+      <group ref={keyboardRef}>
       <mesh
         castShadow
         receiveShadow
@@ -256,6 +300,7 @@ function SceneTest(props) {
         geometry={nodes.Cube033_1.geometry}
         material={materials.Knob_Dark_Ring}
       />
+      </group>
     </group>
   );
 }
@@ -269,13 +314,13 @@ export default function KeyboardScene() {
       // camera={{ position: [0, 0, 6], rotation:[0,0,0] }}
     >
       
-      {/* <OrbitControls /> */}
-        <Center >
-          {/* <pointLight position={[-50, -20, 10]} intensity={0.3} color="#f7221b" /> */}
-          {/* <pointLight position={[-50, 20, -10]} intensity={0.1} color="white" /> */}
-          <SceneTest rotation={[-Math.PI / -2, 0, 0]} scale={1.2}/>
-        </Center>
-        <Environment preset="sunset" /> 
+      {/* <OrbitControls enableZoom={false}/> */}
+      {/* <pointLight position={[-50, -20, 10]} intensity={0.3} color="#f7221b" /> */}
+      {/* <pointLight position={[-50, 20, -10]} intensity={0.1} color="white" /> */}
+      {/* <ScrollControls pages={2} damping={0.25}>
+      </ScrollControls> */}
+      <SceneTest rotation={[-Math.PI / -2, 0, 0]} scale={1} />
+      <Environment preset="sunset" /> 
     </Canvas>
     
   );
