@@ -13,8 +13,9 @@ type Props = {
 const Hero: FC<Props> = ({stopMove}) => {
   const [showAnimation, setShowAnimation] = useState<boolean>(false)
   const [hasScrolled, setHasScrolled] = useState(false)
-  const [scrollDirection, setScrollDirection] = useState<string>('top')
+  // const [scrollDirection, setScrollDirection] = useState<string>('top')
   const [disableModelScroll, setDisableModelScroll] = useState<boolean>(false)
+
   const $ref = useRef<HTMLDivElement | null>()
   const lenis = useLenis(({ scroll }: { scroll: number }) => {
     setHasScrolled(scroll > 0)
@@ -27,10 +28,10 @@ const Hero: FC<Props> = ({stopMove}) => {
       lenis?.start() 
       console.log(hasScrolled)
     }
-    }, [lenis, hasScrolled, showAnimation])
+  }, [lenis, hasScrolled, showAnimation])
 
-    //Letters Background Animation
-    useIsomorphicLayoutEffect(() => {
+  //Letters Background Animation
+  useIsomorphicLayoutEffect(() => {
       const container = $ref.current
       console.log($ref)
       if (!container) return

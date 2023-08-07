@@ -4,13 +4,41 @@ import Link from 'next/link'
 import cn from 'clsx'
 import { FC, useState } from 'react'
 import { Theme } from '@/utils/types'
+import { useIsomorphicLayoutEffect } from 'usehooks-ts'
 
-type Props = { theme?: Theme }
+type Props = { 
+  theme?: Theme,
+  stickyHeader: boolean
+}
 
-const Header: FC<Props> = () => {
+const Header: FC<Props> = ({stickyHeader = false}) => {
+
+  const [fixedHeader, setFixedHeader] = useState(false)
+  const [animateHeader, setAnimateHeader] = useState(false)
+  useIsomorphicLayoutEffect(() => {
+
+      // Check if scroll after Hero
+      const checkPassHero = () => {
+        if (window.scrollY > (window.innerHeight)) {
+          setFixedHeader(true)
+          setTimeout(() => {
+            setAnimateHeader(true)
+          }, 500)
+        }else {
+          setFixedHeader(false)
+          setAnimateHeader(false)
+        }
+      }
+  
+      window.addEventListener("scroll", checkPassHero);
+      return () => {
+        window.removeEventListener("scroll", checkPassHero);
+  
+      }
+    }, [])
 
   return (
-    <div className={styles.root}>
+    <div className={cn(styles.root, stickyHeader || fixedHeader ? styles.fixed : '', animateHeader ? styles.animateFix : '')}>
       <div className="container">
           <div className="grid">
             <div className='span-12'>

@@ -1,7 +1,10 @@
 .root {
   padding-top: 22px;
   padding-bottom: 22px;
+  position: absolute;
+  top: 0;
 }
+
 .logo {
   & > a {
     font-size: var(--size-xl);
@@ -24,9 +27,22 @@
 .button {
   font-size: var(--size-sm);
   text-transform: uppercase;
-  border: 1px solid var(--black);
+  border: 1px solid;
   white-space: nowrap;
   padding: 8px 16px;
   line-height: 14px;
   border-radius: 24px;
+}
+
+.fixed {
+  position: fixed;
+  color: white;
+  background: #000000;
+  top: -100px;
+  z-index: 9;
+}
+
+.animateFix {
+  top: 0;
+  transition: top 0.3s ease;
 }

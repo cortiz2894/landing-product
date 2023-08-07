@@ -4,11 +4,11 @@ import { useState } from 'react'
 
 export default function Home() {
   const [stopMove, setStopMove] = useState<boolean>(false)
-  const [titleRef, setTitleRef] = useState<HTMLDivElement | null>(null)
+  console.log('stopMove: ', stopMove)
   return (
-    <Layout>
-        <Hero stopMove={stopMove} titleRef={titleRef}/>
-        <Presentation isTextInScreen={setStopMove} titleReference={setTitleRef}/>
+    <Layout stickyHeader={stopMove}>
+        <Hero stopMove={stopMove}/>
+        <Presentation isTextInScreen={setStopMove}/>
     </Layout>
   )
 }

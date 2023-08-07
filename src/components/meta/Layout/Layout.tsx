@@ -19,9 +19,10 @@ type Props = {
   meta?: Meta
   children: React.ReactNode
   theme?: Theme
+  stickyHeader: boolean 
 }
 
-const Layout = ({ meta, children, theme = 'dark' }: Props) => {
+const Layout = ({ meta, children, theme = 'dark', stickyHeader }: Props) => {
   const { asPath, events } = useRouter()
 
   const isContact = asPath === '/contact'
@@ -69,7 +70,7 @@ const Layout = ({ meta, children, theme = 'dark' }: Props) => {
       </Head>
 
       <Lenis root>
-        <Header theme={theme} />
+        <Header theme={theme} stickyHeader={stickyHeader}/>
         <main>
           {children}
         </main>

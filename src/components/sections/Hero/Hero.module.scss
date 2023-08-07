@@ -1,6 +1,7 @@
 .root {
     height: calc(100vh - 100px);
     width: 100%;
+    margin-top: 100px;
 }
 
 .title {
@@ -14,10 +15,12 @@
     display: flex;
     justify-content: space-between;
     overflow: hidden;
-    width: 100%;
+    width: calc(100% - var(--grid-gap) *2);
+    left: calc(var(--grid-gap) / 2);
     height: 100%;
     display: flex;
     align-items: flex-end;
+
     & > div {
       display: flex;  
     }

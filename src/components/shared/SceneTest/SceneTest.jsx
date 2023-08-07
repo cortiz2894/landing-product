@@ -1,7 +1,8 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, Environment, OrbitControls, ScrollControls, useScroll } from "@react-three/drei";
-import React, { useRef, useLayoutEffect} from 'react'
+import React, { useRef, useLayoutEffect, useState} from 'react'
 import gsap from "gsap";
+import { useSpring, animated, config } from "@react-spring/three";
 
 export const KEYBOARD_HEIGHT = 0.65
 export const NB_FLOORS = 2
@@ -11,7 +12,13 @@ function SceneTest(props) {
   const ref = useRef()
   const keyboardRef = useRef()
   const tl = useRef()
- 
+  const isHovered = useRef(false)
+  const cylinder = useRef()
+  const cylinder2 = useRef()
+  const cylinder3 = useRef()
+  const cylinder4 = useRef()
+  const cylinder5 = useRef()
+
   function getScrollPercent() {
     var h = document.documentElement, 
         b = document.body,
@@ -19,8 +26,36 @@ function SceneTest(props) {
         sh = 'scrollHeight';
     return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 2;
   }
-  useFrame(()=> {
-    tl.current.seek(getScrollPercent() * tl.current.duration())    
+
+  useFrame(({ clock }, state)=> {
+    
+    tl.current.seek(getScrollPercent() * tl.current.duration())
+    // Rotation velocity
+    const rotationVelocity = Math.sin(clock.getElapsedTime() * 4)
+    // Rotation quantity
+    // ref.current.rotation.z = a / 15
+    
+    // ref.current.scale.y (isHovered.current) ? += 0.01 : 1
+    // ref.current.scale.x (isHovered.current )? time.current += 0.01 : 1
+    // ref.current.scale.z (isHovered.current) ? time.current += 0.01 : 1
+    // cylinder.current.rotation.y = rotationVelocity * 2
+
+    if (isHovered.current) {
+      if(ref.current.scale.x <= 1.2) {
+        ref.current.scale.x += 0.05;
+        ref.current.scale.y += 0.05;
+        ref.current.scale.z += 0.05;
+      }
+    } 
+    else {
+      if(ref.current.scale.x >= 1) {
+        ref.current.scale.x -= 0.05;
+        ref.current.scale.y -= 0.05;
+        ref.current.scale.z -= 0.05;
+      }
+      // ref.current.rotation.y = 0
+    }
+    // console.log(hoverModel)
   })
   
   useLayoutEffect( () => {
@@ -31,30 +66,82 @@ function SceneTest(props) {
       ref.current.position, 
       {
         duration: 2,
-        y: KEYBOARD_HEIGHT * (NB_FLOORS -1),
+        y: KEYBOARD_HEIGHT * (NB_FLOORS -1.5),
+        x: KEYBOARD_HEIGHT * (1)
       },
       0
     )
-
-    tl.current.to(
+    .to(
       keyboardRef.current.rotation,
       {
         duration: 2.3,
-        z: -Math.PI / 2.8
+        z: -Math.PI / 4.2
       },
       0
     )
+    .to(
+      cylinder.current.rotation,
+      {
+        duration: 2,
+        y: -Math.PI / 0.5
+      },
+      0
+    )
+    .to(
+      cylinder2.current.rotation,
+      {
+        duration: 2,
+        y: -Math.PI / 0.5
+      },
+      0
+    )
+    .to(
+      cylinder3.current.rotation,
+      {
+        duration: 2,
+        y: -Math.PI / 0.5
+      },
+      0
+    )
+    .to(
+      cylinder4.current.rotation,
+      {
+        duration: 2,
+        y: -Math.PI / 0.5
+      },
+      0
+    )
+    .to(
+      cylinder5.current.rotation,
+      {
+        duration: 2,
+        y: -Math.PI / 0.5
+      },
+      0
+    )
+    .to(
+      keyboardRef.current.scale,
+      {
+        duration: 2.3,
+        y: 1.1,
+        x: 1.1,
+        z: 1.1
+      },
+      0.5
+    )
+  
   }, [])
 
   return (
-    <group {...props} dispose={null} ref={ref}>
+    <group {...props} dispose={null} ref={ref} onPointerOver={() => {isHovered.current = true}}
+    onPointerLeave={() => {isHovered.current = false;}}>
       <group ref={keyboardRef}>
-      <mesh
+      <animated.mesh
         castShadow
         receiveShadow
         geometry={nodes.Speaker_Panel.geometry}
         material={materials.Metalic_Body}
-        position={[-1.812, 0.173, -1.033]}
+        position={[-1.812, 0.173, -1.033]} 
       >
         <mesh
           castShadow
@@ -63,7 +150,7 @@ function SceneTest(props) {
           material={materials.Speakers}
           position={[1.812, -0.172, 0.478]}
         />
-      </mesh>
+      </animated.mesh>
       <group position={[-2.131, 0.156, -0.49]}>
         <mesh
           castShadow
@@ -170,7 +257,7 @@ function SceneTest(props) {
         geometry={nodes.Blancas.geometry}
         material={materials.Keys_White}
       />
-      <group position={[-2.131, 0.183, -0.491]} scale={[1.064, 0.2, 1.064]}>
+      <group position={[-2.131, 0.183, -0.491]} scale={[1.064, 0.2, 1.064]} ref={cylinder}>
         <mesh
           castShadow
           receiveShadow
@@ -184,7 +271,7 @@ function SceneTest(props) {
           material={materials.Knob_Dark_Ring}
         />
       </group>
-      <group position={[0.425, 0.183, -1.048]} scale={[1.064, 0.2, 1.064]}>
+      <group position={[0.425, 0.183, -1.048]} scale={[1.064, 0.2, 1.064]} ref={cylinder2}>
         <mesh
           castShadow
           receiveShadow
@@ -202,6 +289,7 @@ function SceneTest(props) {
         position={[0.994, 0.183, -1.048]}
         rotation={[Math.PI, -0.21, Math.PI]}
         scale={[1.064, 0.2, 1.064]}
+        ref={cylinder3}
       >
         <mesh
           castShadow
@@ -220,6 +308,7 @@ function SceneTest(props) {
         position={[1.564, 0.183, -1.048]}
         rotation={[0, 0.844, 0]}
         scale={[1.064, 0.2, 1.064]}
+        ref={cylinder4}
       >
         <mesh
           castShadow
@@ -238,6 +327,7 @@ function SceneTest(props) {
         position={[2.133, 0.183, -1.048]}
         rotation={[0, -0.883, 0]}
         scale={[1.064, 0.2, 1.064]}
+        ref={cylinder5}
       >
         <mesh
           castShadow
@@ -316,11 +406,16 @@ export default function KeyboardScene() {
       
       {/* <OrbitControls enableZoom={false}/> */}
       {/* <pointLight position={[-50, -20, 10]} intensity={0.3} color="#f7221b" /> */}
-      {/* <pointLight position={[-50, 20, -10]} intensity={0.1} color="white" /> */}
+      <pointLight position={[-30, 10, 10]} intensity={0.5} color="#fff" />
       {/* <ScrollControls pages={2} damping={0.25}>
-      </ScrollControls> */}
+
+</ScrollControls> */}
+      <directionalLight position={[1, 2.0, 4.4]} intensity={0.6} />
       <SceneTest rotation={[-Math.PI / -2, 0, 0]} scale={1} />
-      <Environment preset="sunset" /> 
+      {/* <Environment preset="warehouse" /> */}
+      {/* <Environment preset="sunset" /> */}
+      {/* <Environment preset="studio" intensity={0.1}/>  */}
+
     </Canvas>
     
   );
