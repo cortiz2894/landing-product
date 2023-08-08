@@ -19,7 +19,7 @@ const Header: FC<Props> = ({stickyHeader = false}) => {
 
       // Check if scroll after Hero
       const checkPassHero = () => {
-        if (window.scrollY > (window.innerHeight)) {
+        if (window.scrollY > (window.innerHeight + 100)) {
           setFixedHeader(true)
           setTimeout(() => {
             setAnimateHeader(true)

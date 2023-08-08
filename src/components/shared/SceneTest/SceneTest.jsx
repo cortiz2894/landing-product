@@ -30,32 +30,28 @@ function SceneTest(props) {
   useFrame(({ clock }, state)=> {
     
     tl.current.seek(getScrollPercent() * tl.current.duration())
+    
     // Rotation velocity
-    const rotationVelocity = Math.sin(clock.getElapsedTime() * 4)
+    // const rotationVelocity = Math.sin(clock.getElapsedTime() * 4)
+
     // Rotation quantity
     // ref.current.rotation.z = a / 15
-    
-    // ref.current.scale.y (isHovered.current) ? += 0.01 : 1
-    // ref.current.scale.x (isHovered.current )? time.current += 0.01 : 1
-    // ref.current.scale.z (isHovered.current) ? time.current += 0.01 : 1
-    // cylinder.current.rotation.y = rotationVelocity * 2
 
-    if (isHovered.current) {
-      if(ref.current.scale.x <= 1.2) {
-        ref.current.scale.x += 0.05;
-        ref.current.scale.y += 0.05;
-        ref.current.scale.z += 0.05;
-      }
-    } 
-    else {
-      if(ref.current.scale.x >= 1) {
-        ref.current.scale.x -= 0.05;
-        ref.current.scale.y -= 0.05;
-        ref.current.scale.z -= 0.05;
-      }
-      // ref.current.rotation.y = 0
-    }
-    // console.log(hoverModel)
+    // Scale on Hover
+    // if (isHovered.current) {
+    //   if(ref.current.scale.x <= 1.2) {
+    //     ref.current.scale.x += 0.05;
+    //     ref.current.scale.y += 0.05;
+    //     ref.current.scale.z += 0.05;
+    //   }
+    // } 
+    // else {
+    //   if(ref.current.scale.x >= 1) {
+    //     ref.current.scale.x -= 0.05;
+    //     ref.current.scale.y -= 0.05;
+    //     ref.current.scale.z -= 0.05;
+    //   }
+    // }
   })
   
   useLayoutEffect( () => {

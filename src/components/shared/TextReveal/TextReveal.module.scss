@@ -30,6 +30,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  &.regular { 
+    .line {
+      height: 3.5rem;
+    }
+    span {
+      font-size: 2.2rem;
+      line-height: 3.2rem;
+    }
+  }
     span {
       color: var(--white);
       font-size: 7rem;

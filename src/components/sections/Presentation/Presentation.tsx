@@ -2,7 +2,7 @@ import { FC, SetStateAction, Dispatch, useEffect, useRef } from 'react'
 import cn from 'clsx'
 import styles from './Presentation.module.scss'
 import { useInView } from 'react-intersection-observer'
-import { Title } from '@/components/shared'
+import { TextReveal } from '@/components/shared'
 
 type Props = {
 	isTextInScreen : Dispatch<SetStateAction<boolean>>,
@@ -24,8 +24,19 @@ const Presentation: FC<Props> = ( { isTextInScreen }) => {
         <div className='container'>
 					<div className='grid' >
 						<div className='span-12' ref={ref}>
-							<Title text={"HiKeys―1977"} align={'center'}/>
-							<h4 className={styles.copy}>Experience seamless control and effortless navigation with our synth keyboards' intuitive interface. Designed with musicians in mind, the user-friendly layout ensures that you spend more time creating and less time navigating complex menus.</h4>
+							<TextReveal text={[{text : "HiKeys―1977"}]} align={'center'} size={'large'}/>
+							<div className={styles.paragrapht}>
+								<TextReveal text={[{text : "Experience seamless control and effortless navigation"}]} align={'left'}/>
+								<TextReveal text={[{text : "with our synth keyboards intuitive interface."}]} align={'left'}/>
+								<TextReveal text={[{text : "Designed with musicians in mind, the user-friendly layout"}]} align={'left'}/>
+								<TextReveal text={[{text : "ensures that you spend more time creating and less time navigating complex menus."}]} align={'left'}/>
+							</div>
+							{/* <TextReveal align='left' text={[
+								{ text : "Experience seamless control and effortless navigation with our synth keyboards intuitive interface." },
+								{ text : "Designed with musicians in mind, the user-friendly layout" },
+								{ text: "ensures that you spend more time creating and less time navigating complex menus." }
+							]} /> */}
+							{/* <h4 className={styles.copy}></h4> */}
 						</div>
 						<div className='span-12'>
 							<img src={'/synth-linewar.png'} className={styles.linewar}/>
