@@ -10,8 +10,8 @@ export default function Home() {
     <Layout
       theme="goldy"
       meta={{
-        title: 'Contact - ++hellohello',
-        description: 'Let’s talk about what you need, and how we can help.'
+        title: 'Contact',
+        description: 'Contact Page'
       }}
     >
     

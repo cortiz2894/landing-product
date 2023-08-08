@@ -35,7 +35,7 @@ const Footer = ({ isContact, theme = 'dark' }: Props) => (
         <div className="grid">
           <div className={cn('span-2', styles.brandCopy)}>
             <Link href="/" className={styles.logo}>
-              <VisuallyHidden>++hellohello</VisuallyHidden>
+              <VisuallyHidden>3D Landing</VisuallyHidden>
               {/* <IconLogo /> */}
             </Link>
             <span>All rights reserved ©{new Date().getFullYear()}</span>
@@ -62,7 +62,7 @@ const Footer = ({ isContact, theme = 'dark' }: Props) => (
                   className={styles.link}
                   target="_blank"
                   rel="noreferrer"
-                  href="https://dribbble.com/hellohelloteam"
+                  href=""
                 >
                   Dribbble
                 </Link>
@@ -72,7 +72,7 @@ const Footer = ({ isContact, theme = 'dark' }: Props) => (
                   className={styles.link}
                   target="_blank"
                   rel="noreferrer"
-                  href="https://www.instagram.com/hellohelloteam"
+                  href=""
                 >
                   Instagram
                 </Link>
@@ -82,7 +82,7 @@ const Footer = ({ isContact, theme = 'dark' }: Props) => (
                   className={styles.link}
                   target="_blank"
                   rel="noreferrer"
-                  href="https://www.linkedin.com/company/hellohello"
+                  href=""
                 >
                   Linkedin
                 </Link>
@@ -92,7 +92,7 @@ const Footer = ({ isContact, theme = 'dark' }: Props) => (
                   className={styles.link}
                   target="_blank"
                   rel="noreferrer"
-                  href="https://twitter.com/hellohelloteam"
+                  href=""
                 >
                   Twitter
                 </Link>
@@ -114,7 +114,7 @@ const Footer = ({ isContact, theme = 'dark' }: Props) => (
               <li>
                 <Link
                   className={styles.link}
-                  href="https://hellohello.factorialhr.com/"
+                  href=""
                   target="_blank"
                   rel="noreferrer"
                 >
