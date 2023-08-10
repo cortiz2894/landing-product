@@ -33,7 +33,6 @@ const Hero: FC<Props> = ({stopMove}) => {
   //Letters Background Animation
   useIsomorphicLayoutEffect(() => {
       const container = $ref.current
-      console.log($ref)
       if (!container) return
 
       const letter = gsap.utils.toArray(container.querySelectorAll('h2'))
@@ -42,6 +41,7 @@ const Hero: FC<Props> = ({stopMove}) => {
         .to(letter, {
           translateY: -1000,
           stagger: 0.1,
+          opacity: 0,
           ease: '0.48, 0.01, 0.27, 1.00',
           overwrite: true,
           onComplete: () => {
@@ -53,6 +53,7 @@ const Hero: FC<Props> = ({stopMove}) => {
         .to(letter, {
           translateY: 0,
           stagger: 0.3,
+          opacity: 1,
           ease: '0.48, 0.01, 0.27, 1.00',
           overwrite: true
         })

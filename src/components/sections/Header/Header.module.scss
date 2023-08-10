@@ -3,6 +3,7 @@
   padding-bottom: 22px;
   position: absolute;
   top: 0;
+  z-index: 2;
 }
 
 .logo {
@@ -27,11 +28,14 @@
 .button {
   font-size: var(--size-sm);
   text-transform: uppercase;
-  border: 1px solid;
   white-space: nowrap;
-  padding: 8px 16px;
   line-height: 14px;
-  border-radius: 24px;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    font-weight: 600;
+  }
 }
 
 .fixed {

@@ -1,8 +1,9 @@
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, Environment, OrbitControls, ScrollControls, useScroll } from "@react-three/drei";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
 import React, { useRef, useLayoutEffect, useState} from 'react'
 import gsap from "gsap";
-import { useSpring, animated, config } from "@react-spring/three";
+import { animated } from "@react-spring/three";
+import * as THREE from "three";
 
 export const KEYBOARD_HEIGHT = 0.65
 export const NB_FLOORS = 2
@@ -18,6 +19,17 @@ function SceneTest(props) {
   const cylinder3 = useRef()
   const cylinder4 = useRef()
   const cylinder5 = useRef()
+
+  const [video] = useState(() => {
+    const vid = document.createElement("video");
+    vid.src = '/video3.mp4';
+    vid.crossOrigin = "Anonymous";
+    vid.loop = true;
+    vid.muted = true;
+    vid.play();
+    return vid;
+  });
+
 
   function getScrollPercent() {
     var h = document.documentElement, 
@@ -64,6 +76,14 @@ function SceneTest(props) {
         duration: 2,
         y: KEYBOARD_HEIGHT * (NB_FLOORS -1.5),
         x: KEYBOARD_HEIGHT * (1)
+      },
+      0
+    )
+    .to(
+      '#presentation',
+      {
+        duration: 2.5,
+        translateY: -400
       },
       0
     )
@@ -245,8 +265,12 @@ function SceneTest(props) {
         castShadow
         receiveShadow
         geometry={nodes.Negras.geometry}
-        material={materials.Keys_Black}
-      />
+        // material={materials.Keys_Black}
+        material={materials.Know_Plastic}
+
+      >
+        <meshBasicMaterial color="rgb(37, 37, 37)" />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
@@ -344,12 +368,23 @@ function SceneTest(props) {
         geometry={nodes.Cube005.geometry}
         material={materials.Metalic_Body}
       />
+      {/* <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cube005_1.geometry}
+        material={materials.Screen}
+      /> */}
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.Cube005_1.geometry}
         material={materials.Screen}
-      />
+      >
+        <meshStandardMaterial emissive={"white"} side={THREE.DoubleSide}>
+          <videoTexture attach="map" args={[video]} />
+          <videoTexture attach="emissiveMap" args={[video]} />
+        </meshStandardMaterial>
+      </mesh>
       <mesh
         castShadow
         receiveShadow
@@ -391,27 +426,25 @@ function SceneTest(props) {
   );
 }
 
+function Rig() {
+  const { camera, mouse } = useThree()
+  const vec = new THREE.Vector3()
+  return useFrame(() => {
+    camera.position.lerp(vec.set(mouse.x / 4, mouse.y / 4, camera.position.z * 1), 0.02)
+  })
+}
 
 export default function KeyboardScene() {
   
   return (
-    <Canvas 
-      // camera={{ position: [0, -0.25, 1] }}
-      // camera={{ position: [0, 0, 6], rotation:[0,0,0] }}
-    >
-      
-      {/* <OrbitControls enableZoom={false}/> */}
-      {/* <pointLight position={[-50, -20, 10]} intensity={0.3} color="#f7221b" /> */}
+    <Canvas >
       <pointLight position={[-30, 10, 10]} intensity={0.5} color="#fff" />
       {/* <ScrollControls pages={2} damping={0.25}>
 
 </ScrollControls> */}
       <directionalLight position={[1, 2.0, 4.4]} intensity={0.6} />
       <SceneTest rotation={[-Math.PI / -2, 0, 0]} scale={1} />
-      {/* <Environment preset="warehouse" /> */}
-      {/* <Environment preset="sunset" /> */}
-      {/* <Environment preset="studio" intensity={0.1}/>  */}
-
+      <Rig />
     </Canvas>
     
   );

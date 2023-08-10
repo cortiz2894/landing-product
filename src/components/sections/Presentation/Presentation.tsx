@@ -21,6 +21,7 @@ const Presentation: FC<Props> = ( { isTextInScreen }) => {
 
     return (
       <div className={styles.root}>
+		<div id={'presentation'} className={styles.blackScroll}></div>
         <div className='container'>
 					<div className='grid' >
 						<div className='span-12' ref={ref}>

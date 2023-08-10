@@ -1,0 +1,48 @@
+.root {
+    background: white;
+    padding: 3em 0;
+}
+
+.item {
+    border: 1px solid #727272;
+    min-height: auto;
+    position: relative;
+    opacity: 0;
+}
+
+.cross {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: white;
+    padding: 15px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -42.5px;
+
+    &::before {
+        content: '';
+        width: 30px;
+        background: #727272;
+        height: 1px;
+        position: absolute;
+    }
+
+    &::after {
+        content: '';
+        height: 30px;
+        width: 1px;
+        position: relative;
+        background: #727272;
+    }
+
+    &:nth-of-type(1) {
+        top: -30px;
+    }
+
+    &:nth-last-child(1) {
+        bottom: -30px;;
+    }
+}
