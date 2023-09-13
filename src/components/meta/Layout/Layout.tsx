@@ -6,7 +6,6 @@ import  { ArrowLink } from '@/components/shared'
 import { Header, Footer } from '@/components/sections'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/utils/constants'
 import { Theme } from '@/utils/types'
-import {useState, useEffect} from 'react'
 
 type Meta = {
   title: string | null
