@@ -16,7 +16,7 @@ const Hero: FC<Props> = ({stopMove}) => {
   // const [scrollDirection, setScrollDirection] = useState<string>('top')
   const [disableModelScroll, setDisableModelScroll] = useState<boolean>(false)
 
-  const $ref = useRef<HTMLDivElement | null>()
+  const $ref = useRef<HTMLDivElement | null>(null)
   const lenis = useLenis(({ scroll }: { scroll: number }) => {
     setHasScrolled(scroll > 0)
   })
@@ -104,6 +104,7 @@ const Hero: FC<Props> = ({stopMove}) => {
         <div className={cn(styles.canvas, !stopMove && !disableModelScroll ? styles.fixed : '')}>
           <KeyboardScene/>
         </div>
+        {/* {@ts-ignore} */}
         <div className={styles.backgroundText} ref={$ref}>
           <div>
             <h2 className={styles.text}>H</h2>
