@@ -8,7 +8,7 @@ export default function Error404() {
         <title>Page not found 404</title>
       </Head>
 
-      <Header />
+      {/* <Header /> */}
       <NotFound />
     </>
   )
