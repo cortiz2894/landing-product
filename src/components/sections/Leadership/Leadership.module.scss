@@ -1,6 +1,10 @@
 .root {
     background: white;
     padding: 3em 0;
+
+    p {
+        margin-top: 1em;
+    }
 }
 
 .item {
@@ -8,6 +12,7 @@
     min-height: auto;
     position: relative;
     opacity: 0;
+    padding: 1em;
 }
 
 .cross {

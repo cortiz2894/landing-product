@@ -48,6 +48,10 @@ const Leadership: FC<Props> = ({}) => {
                 <div className='span-3'>
                     <article className={cn(styles.item, 'item')}>
                         <img src='/synth1.png' />
+                        <p>
+                            A 3340 voltage controlled oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable.
+                            Oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable
+                        </p>
                         <div className={styles.cross}></div>
                         <div className={styles.line}></div>
                         <div className={styles.cross}></div>
@@ -56,6 +60,10 @@ const Leadership: FC<Props> = ({}) => {
                 <div className='span-3'>
                     <article className={cn(styles.item, 'item')}>
                         <img src='/synth2.png' />
+                        <p>
+                            A 3340 voltage controlled oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable.
+                            Oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable
+                        </p>
                         <div className={styles.cross}></div>
                         <div className={styles.line}></div>
                         <div className={styles.cross}></div>
@@ -64,6 +72,10 @@ const Leadership: FC<Props> = ({}) => {
                 <div className='span-3'>
                     <article className={cn(styles.item, 'item')}>
                         <img src='/synth3.png' />
+                        <p>
+                            A 3340 voltage controlled oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable.
+                            Oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable
+                        </p>
                         <div className={styles.cross}></div>
                         <div className={styles.line}></div>
                         <div className={styles.cross}></div>
@@ -72,6 +84,10 @@ const Leadership: FC<Props> = ({}) => {
                 <div className='span-3'>
                     <article className={cn(styles.item, 'item')}>
                         <img src='/synth4.png' />
+                        <p>
+                            A 3340 voltage controlled oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable.
+                            Oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable
+                        </p>
                         <div className={styles.cross}></div>
                         <div className={styles.line}></div>
                         <div className={styles.cross}></div>

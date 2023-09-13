@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app'
 import { Transition } from '@/components/meta'
 import { Cursor } from '@/components/shared'
-import { useGtag } from '@/utils/gtag'
 import '@/styles/globals.scss'
 import { Provider } from 'react-wrap-balancer'
 import { useEffect } from 'react'
@@ -40,8 +39,6 @@ const monument = localFont({
 })
 
 function App({ Component, pageProps, router }: AppProps) {
-  useGtag(router)
-
   useEffect(() => {
     // https://css-tricks.com/the-trick-to-viewport-units-on-mobile
     function onWindowResize() {

@@ -1,0 +1,19 @@
+.root {
+    
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(22, 22, 22) 47%, rgb(0, 0, 0) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.canvas {
+    height: 150%;
+    width: 50%;
+    float: left;
+
+    &:nth-of-type(2) {
+        transform: rotate(180deg);
+    }
+}

@@ -1,5 +1,5 @@
 import { Layout } from '@/components/meta'
-import { Hero, Presentation, Leadership } from '@/components/sections'
+import { Hero, Presentation, Leadership, Parallax } from '@/components/sections'
 import { useState } from 'react'
 
 export default function Home() {
@@ -9,6 +9,7 @@ export default function Home() {
     <Layout stickyHeader={stopMove}>
         <Hero stopMove={stopMove}/>
         <Presentation isTextInScreen={setStopMove}/>
+        <Parallax />
         <Leadership />
     </Layout>
   )
