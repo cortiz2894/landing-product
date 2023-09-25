@@ -1,5 +1,7 @@
 import { Layout } from '@/components/meta'
 import { Hero, Presentation, Leadership, Parallax } from '@/components/sections'
+import { TextMarquee } from '@/components/shared'
+
 import { useState } from 'react'
 
 export default function Home() {
@@ -9,8 +11,9 @@ export default function Home() {
     <Layout stickyHeader={stopMove}>
         <Hero stopMove={stopMove}/>
         <Presentation isTextInScreen={setStopMove}/>
-        <Parallax />
+        <TextMarquee content='This text will be infinite looping'/>
         <Leadership />
+        {/* <Parallax /> */}
     </Layout>
   )
 }
