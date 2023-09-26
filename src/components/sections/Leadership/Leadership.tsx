@@ -8,9 +8,10 @@ import { useInView } from 'react-intersection-observer'
 
 type Props = {
 //   stopMove: boolean,
+    theme: 'light' | 'dark'
 }
 
-const Leadership: FC<Props> = ({}) => {
+const Leadership: FC<Props> = ({theme}) => {
     const $ref = useRef<HTMLDivElement>(null)
     const { ref, inView, entry } = useInView({
 		/* Optional options */
@@ -41,7 +42,7 @@ const Leadership: FC<Props> = ({}) => {
     }, [inView])
 
     return (
-      <div className={styles.root} ref={ref}>
+      <div className={cn(styles.root, styles[theme])} ref={ref}>
         <div className={styles.backgroundLayout}>
           <div className='container'>
             <div className='grid' ref={$ref}>

@@ -9,9 +9,10 @@ type Props = {
   content: string
 	direction?: string
 	speed?: number
+	theme: 'light' | 'dark'
 }
 
-const TextMarquee: FC<Props> = ({ content, direction = 'left', speed = 1 }) => {
+const TextMarquee: FC<Props> = ({ content, direction = 'left', speed = 1, theme }) => {
 	const ref = useRef<HTMLDivElement | null>(null)
 	const container = useRef<HTMLDivElement | null>(null)
 
@@ -37,9 +38,11 @@ const TextMarquee: FC<Props> = ({ content, direction = 'left', speed = 1 }) => {
   return (
 	<>
 			<div>
-				<section className={styles.heroSection}>
+				<section className={cn(styles.heroSection, styles[theme])}>
 					<div className={'loop-container'} ref={container}>
-							<div className={styles.item} id="text" ref={ref}>{ content}&nbsp;</div>
+							<div className={styles.item} id="text" ref={ref}>
+								<span>{ content}&nbsp;</span>
+							</div>
 					</div>
 				</section>
 			</div>

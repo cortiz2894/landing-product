@@ -2,16 +2,28 @@
 	position: relative;
 	overflow: hidden;
 	font-size: 40px;
-	background-color: currentColor;
 	font: 900 9vw/1 sans-serif;
-	& > div {
-			div {
-					font-weight: 400;
-					text-transform: uppercase;
-					padding-top: 0.5em;
-					padding-bottom: 0.5em;
-					font-size: var(--size-l);
-					color: white;
-			}
+	padding-top: 1.5em;
+	padding-bottom: 1em;
+	transition: background-color 0.2s ease-out; 
+	span {
+			font-weight: 400;
+			text-transform: uppercase;
+			padding-top: 0.5em;
+			padding-bottom: 0.5em;
+			font-size: var(--size-l);
+			transition: color 0.2s ease-out; 
+	}
+	&.dark {
+		background-color: black;
+		span {
+			color: white;
+		}
+	}
+	&.light {
+		background-color: white;
+		span {
+			color: black;
+		}
 	}
 }

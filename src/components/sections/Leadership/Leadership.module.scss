@@ -1,9 +1,24 @@
 .root {
-    background: white;
     padding: 3em 0;
-
+    transition: background-color 0.2s ease-out, color 0.2s ease-out;
     p {
         margin-top: 1em;
+    }
+    &.light {
+        background: white;
+        color: black;
+
+        .cross {
+            background: white;
+        }
+    }
+    &.dark {
+        background: black;
+        color: white;
+
+        .cross {
+            background: black;
+        }
     }
 }
 
@@ -19,13 +34,13 @@
     position: absolute;
     width: 60px;
     height: 60px;
-    background: white;
     padding: 15px;
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     right: -42.5px;
+    transition: background-color 0.2s ease-out;
 
     &::before {
         content: '';
