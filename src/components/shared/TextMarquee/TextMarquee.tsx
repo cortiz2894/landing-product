@@ -7,12 +7,12 @@ import LoopingText from '@/utils/marquee.js'
 
 type Props = {
   content: string
-	direction?: string
-	speed?: number
+	direction: string
+	speed: number
 	theme: 'light' | 'dark'
 }
 
-const TextMarquee: FC<Props> = ({ content, direction = 'left', speed = 1, theme }) => {
+const TextMarquee: FC<Props> = ({ content, direction, speed, theme }) => {
 	const ref = useRef<HTMLDivElement | null>(null)
 	const container = useRef<HTMLDivElement | null>(null)
 
