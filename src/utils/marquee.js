@@ -29,7 +29,7 @@ var checkScrollSpeed = (function (settings) {
     };
 })();
 
-export default class LoopingText {
+class LoopingText {
     constructor(el, direction, speed) {
         this.el = el;
         this.lerp = { current: 0, target: 0 };
@@ -73,3 +73,5 @@ export default class LoopingText {
         window.requestAnimationFrame(() => this.render());
     }
 }
+
+export default LoopingText

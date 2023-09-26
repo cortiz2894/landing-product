@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app'
 import { Transition } from '@/components/meta'
 import { Cursor  } from '@/components/shared'
-import {ErrorBoundary} from '@/components/sections'
 import '@/styles/globals.scss'
 import { Provider } from 'react-wrap-balancer'
 import { useEffect } from 'react'
@@ -60,13 +59,11 @@ function App({ Component, pageProps, router }: AppProps) {
 
   return (
     <div className={monument.className}>
-      <ErrorBoundary>
       <Provider>
         <Component {...pageProps} />
       </Provider>
       <Cursor />
       <Transition />
-      </ErrorBoundary>
     </div>
   )
 }

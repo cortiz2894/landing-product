@@ -46,4 +46,5 @@ const TextMarquee: FC<Props> = ({ content, direction, speed, theme }) => {
   )
 }
 
+
 export default TextMarquee
