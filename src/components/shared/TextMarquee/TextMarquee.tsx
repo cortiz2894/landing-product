@@ -1,6 +1,6 @@
 import styles from './TextMarquee.module.scss'
 import cn from 'clsx'
-import { useRef , useLayoutEffect, useState} from 'react'
+import { useRef , useLayoutEffect, useState, useEffect} from 'react'
 import { FC } from 'react'
 import LoopingText from '../../../utils/marquee'
 
@@ -16,23 +16,19 @@ const TextMarquee: FC<Props> = ({ content, direction = 'left', speed = 1, theme 
 	const ref = useRef<HTMLDivElement | null>(null)
 	const container = useRef<HTMLDivElement | null>(null)
 
-  useLayoutEffect( () => {
-		
+  useEffect( () => {
 		if(ref.current && container.current) {
 			const clone = ref.current.cloneNode(true);
 			container.current.appendChild(clone);
-			document
-					.querySelectorAll(".loop-container")
-					.forEach(
-							(el) =>
-									new LoopingText(
-											el,
-											direction == "left" ? -1 : 1,
-											speed
-									)
-					);
+			document.querySelectorAll(".loop-container").forEach(
+				(el) =>
+						new LoopingText(
+								el,
+								direction == "left" ? -1 : 1,
+								speed
+						)
+			);
 		}	
-		
 	}, [speed])
 
   return (
