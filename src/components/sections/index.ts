@@ -5,3 +5,5 @@ export { default as Presentation } from './Presentation/Presentation'
 export { default as Leadership } from './Leadership/Leadership'
 export { default as Parallax } from './Parallax/Parallax'
 export { default as NotFound } from './NotFound/NotFound'
+export { default as ErrorBoundary } from './ErrorBoundary/ErrorBoundary'
+

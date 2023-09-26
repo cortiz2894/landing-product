@@ -1,5 +1,5 @@
 import { Layout } from '@/components/meta'
-import { Hero, Presentation, Leadership, Parallax } from '@/components/sections'
+import { Hero, Presentation, Leadership } from '@/components/sections'
 import { TextMarquee } from '@/components/shared'
 import { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
