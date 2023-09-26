@@ -1,8 +1,8 @@
 import styles from './TextMarquee.module.scss'
 import cn from 'clsx'
-import { useRef , useLayoutEffect, useState, useEffect} from 'react'
+import { useRef, useEffect} from 'react'
 import { FC } from 'react'
-import LoopingText from '../../../utils/marquee'
+import LoopingText from '../../../utils/marquee.js'
 
 
 type Props = {

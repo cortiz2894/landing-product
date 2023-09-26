@@ -30,7 +30,6 @@ const line = useRef<HTMLDivElement>(null)
 		const tl = gsap.timeline({defaults: {duration: 1.8}});
 
 		if(inView){ 
-			console.log('es mayor a 1: ', text.length > 1)
 			if(text.length > 1) {
 				tl.from('.line span', {
 					y: 200,

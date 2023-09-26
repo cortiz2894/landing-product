@@ -25,7 +25,6 @@ var checkScrollSpeed = (function (settings) {
         lastPos = newPos;
         clearTimeout(timer);
         timer = setTimeout(clear, delay);
-        console.log('Math.abs(delta): ', delta)
         return Math.abs(delta);
     };
 })();
