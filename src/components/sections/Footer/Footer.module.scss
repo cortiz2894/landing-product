@@ -4,149 +4,16 @@
 // @import url('@/components/styles/globals.scss');
 // @import url('@/components/styles/_utils.scss');
 
-// .root {
-//   font-size: var(--size-sm);
-//   line-height: calc(var(--size-em) - 2px);
-
-//   &.dark {
-//     background-color: var(--black);
-//     color: var(--white);
-//   }
-//   &.light {
-//     background-color: var(--white);
-//     color: var(--black);
-//   }
-// }
-
-// .preFooter {
-//   padding-top: 30px;
-//   padding-bottom: 206px;
-
-//   .active {
-//     @include md-down {
-//       display: none;
-//     }
-//   }
-
-//   h3 {
-//     margin-bottom: 16px;
-
-//     @include md-down {
-//       padding-right: 5em;
-//     }
-//   }
-
-//   @include md-down {
-//     width: 100%;
-//     padding-top: 16px;
-//     padding-bottom: 197px;
-//   }
-// }
-
-// .bottomFooter {
-//   border-top: 1px solid var(--white);
-//   font-weight: 500;
-//   padding-top: 16px;
-//   padding-bottom: 24px;
-//   &.contactFoot {
-//     border: none;
-//     padding-top: 24px;
-//   }
-//   ul {
-//     margin: 0;
-//     padding: 0;
-//     list-style: none;
-//   }
-
-//   li {
-//     margin-bottom: 10px;
-
-//     @include md-down {
-//       margin-bottom: 24px;
-//     }
-
-//     &:nth-last-child(1) {
-//       margin-bottom: 0px;
-//     }
-//   }
-
-//   span {
-//     display: block;
-//     line-height: 16.8px;
-
-//     @include md-down {
-//       line-height: var(--size-md);
-//     }
-//   }
-// }
-
-// .contactBtn {
-//   a {
-//     height: calc(var(--size-xl) / 2);
-//     font-size: var(--size-xl);
-//   }
-// }
-
-// .logo {
-//   margin-bottom: 16px;
-//   display: block;
-
-//   @include md-down {
-//     margin-bottom: 8px;
-//   }
-// }
-
-// .links {
-//   &:nth-of-type(4) {
-//     @include md-down {
-//       order: 1;
-//       margin-bottom: 80px;
-//     }
-//   }
-
-//   &:nth-of-type(5) {
-//     @include md-down {
-//       order: 2;
-//       margin-bottom: 80px;
-//     }
-//   }
-
-//   &:nth-of-type(6) {
-//     @include md-down {
-//       order: 3;
-//       margin-bottom: 80px;
-//     }
-//   }
-// }
-
-// .officeInfo {
-//   @include md-down {
-//     order: 4;
-//     grid-column-start: 1;
-//     margin-bottom: 80px;
-//   }
-// }
-
-// .policy {
-//   @include md-down {
-//     order: 5;
-//   }
-// }
-
-// .brandCopy {
-//   @include md-down {
-//     grid-column: auto/span 6;
-//     order: 6;
-//   }
-// }
-
-// .bigButton {
-//   font-size: max(4em, calc(128px + (100vw - 1440px) / 18));
-
-//   @include sm-down {
-//     font-size: 16vw;
-//   }
-
-//   line-height: 1;
-//   letter-spacing: -0.03em;
-// }
+.root {
+  font-size: var(--size-sm);
+  line-height: calc(var(--size-em) - 2px);
+  min-height: 100vh;
+  &.dark {
+    background-color: var(--black);
+    color: var(--white);
+  }
+  &.light {
+    background-color: var(--white);
+    color: var(--black);
+  }
+}

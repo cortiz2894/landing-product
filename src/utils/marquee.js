@@ -48,7 +48,7 @@ class LoopingText {
     
     events() {
         window.onscroll = () => {
-            this.lerp.target += this.speed * checkScrollSpeed() / 4
+            this.lerp.target += this.speed * checkScrollSpeed() / 6
         };
     }
 

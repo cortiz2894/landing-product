@@ -8,11 +8,11 @@ import { useIsomorphicLayoutEffect } from 'usehooks-ts'
 import activeHover from '@/utils/text_hover_effect'
 
 type Props = { 
-  theme?: Theme,
+  theme: Theme,
   stickyHeader: boolean
 }
 
-const Header: FC<Props> = ({stickyHeader = false}) => {
+const Header: FC<Props> = ({stickyHeader = false, theme = 'dark'}) => {
 
   const [fixedHeader, setFixedHeader] = useState(false)
   const [animateHeader, setAnimateHeader] = useState(false)
@@ -39,7 +39,7 @@ const Header: FC<Props> = ({stickyHeader = false}) => {
     }, [])
 
   return (
-    <div className={cn(styles.root, stickyHeader || fixedHeader ? styles.fixed : '', animateHeader ? styles.animateFix : '')}>
+    <div className={cn(styles.root, stickyHeader || fixedHeader ? styles.fixed : '', animateHeader ? styles.animateFix : '', styles[theme])}>
       <div className="container">
           <div className="grid">
             <div className='span-12'>

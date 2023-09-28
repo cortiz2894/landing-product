@@ -73,7 +73,7 @@ const Layout = ({ meta, children, theme = 'dark', stickyHeader }: Props) => {
         <main>
           {children}
         </main>
-        {/* <Footer isContact={isContact} theme={isPrivacy ? 'light' : 'dark'} /> */}
+        <Footer theme={theme} />
       </Lenis>
     </>
   )

@@ -5,6 +5,19 @@
   top: 0;
   z-index: 2;
   width: 100%;
+
+  &.dark {
+    &.fixed {
+      color: white;
+      background: #000000;
+    }
+  }
+  &.light {
+    &.fixed {
+      color: black;
+      background: white;
+    }
+  }
 }
 
 .logo {
@@ -41,10 +54,9 @@
 
 .fixed {
   position: fixed;
-  color: white;
-  background: #000000;
   top: -100px;
   z-index: 9;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out;
 }
 
 .animateFix {

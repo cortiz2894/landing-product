@@ -11,13 +11,15 @@ export default function Home() {
 		triggerOnce: false
 	})
 
+  const theme = inView ? 'light' : 'dark'
+
   return (
-    <Layout stickyHeader={stopMove}>
+    <Layout stickyHeader={stopMove} theme={theme}>
         <Hero stopMove={stopMove}/>
         <Presentation isTextInScreen={setStopMove}/>
-        <TextMarquee speed={1} direction='left' content='Mind the business, we build the product.' theme={inView ? 'light' : 'dark'}/>
-        <Leadership  theme={inView ? 'light' : 'dark'}/>
-        <footer ref={ref} style={{minHeight: '40vh'}}>FOOTER</footer>
+        <TextMarquee speed={1} direction='left' content='Mind the business, we build the product.' theme={theme}/>
+        <Leadership  theme={theme}/>
+        <div ref={ref}></div>
     </Layout>
   )
 }
