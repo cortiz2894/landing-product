@@ -28,11 +28,10 @@ const Footer = ({ theme = 'dark' }: Props) => {
           yPercent: 0,
           stagger: 0.05,
           scrollTrigger: {
-            trigger: '.animtext',
-            start: "top 75%",
-            end: "top 40%",
-            scrub: 0.5,
-            markers: true
+            trigger: '.animate-text',
+            start: () => "top 75%",
+            end: () => "top 35%",
+            scrub: 0.5
           }
         }
       );
@@ -42,7 +41,7 @@ const Footer = ({ theme = 'dark' }: Props) => {
     });
     
     return () => ctx.revert(); // <-- cleanup!
-  }, [])
+  })
 
 
   return(

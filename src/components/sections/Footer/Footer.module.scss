@@ -7,7 +7,8 @@
 .root {
   font-size: var(--size-sm);
   line-height: calc(var(--size-em) - 2px);
-  min-height: 95vh;
+  min-height: 900px;
+  position: relative;
   &.dark {
     background-color: var(--black);
     color: var(--white);
@@ -25,8 +26,8 @@
 .textAnimation {
   display: flex;
   justify-content: center;
-  // margin-top: 5em;
-  position: absolute;
+  margin-top: 5em;
+  position: relative;
   
   h3 {
     font-size: 18vw;
