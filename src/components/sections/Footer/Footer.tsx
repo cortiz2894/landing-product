@@ -5,33 +5,62 @@ import { gsap } from '@/utils/gsap'
 import styles from './Footer.module.scss'
 import { ArrowLink, VisuallyHidden } from '@/components/shared'
 import { useIsomorphicLayoutEffect } from 'usehooks-ts'
+import { useRef } from 'react'
 
 type Props = {
   theme: 'dark' | 'light'
 }
 
 const Footer = ({ theme = 'dark' }: Props) => {
-  useIsomorphicLayoutEffect(() => {
+  const ref = useRef<HTMLDivElement>(null)
 
+  useIsomorphicLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      // put all your GSAP/ScrollTrigger code inside here!
+      gsap.fromTo(
+        '.animate-text h3',
+        {
+          opacity: 0,
+          yPercent: 100
+        },
+        {
+          opacity: 1,
+          yPercent: 0,
+          stagger: 0.05,
+          scrollTrigger: {
+            trigger: '.animtext',
+            start: "top 75%",
+            end: "top 40%",
+            scrub: 0.5,
+            markers: true
+          }
+        }
+      );
+      gsap.set('.animate-text', {
+        opacity: 1
+      });
+    });
+    
+    return () => ctx.revert(); // <-- cleanup!
   }, [])
 
 
   return(
-  <div className={cn(styles.root, styles[theme])}>
+  <div className={cn(styles.root, styles[theme], 'start-footer-animation')}>
     <div className="container">
       <div className='grid'>
         <div className='span-10'>
-          <p>Relax. We got you.</p>
+          <p className={styles.textBasic}>Relax. We got you.</p>
         </div>
-        <div className='span-2'>
+        <div className='span-2 animtext'>
           <ul className={styles.socialMedia}>
-            <li>Instagram</li>
-            <li>Linkedin</li>
-            <li>Github</li>
+            <li><a href={'/'} className={styles.textBasic}>Instagram</a></li>
+            <li><a href={'/'} className={styles.textBasic}>Linkedin</a></li>
+            <li><a href={'/'} className={styles.textBasic}>Github</a></li>
           </ul>
         </div>
-        <div className='span-12'>
-          <div className='animate-text'>
+        <div className={cn('span-12')}>
+          <div className={cn('animate-text', styles.textAnimation)} ref={ref}>
             <h3 className={styles.bottomLettering}>H</h3>
             <h3 className={styles.bottomLettering}>i</h3>
             <h3 className={styles.bottomLettering}>K</h3>

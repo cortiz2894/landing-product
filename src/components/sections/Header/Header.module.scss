@@ -57,6 +57,12 @@
   top: -100px;
   z-index: 9;
   transition: background-color 0.2s ease-out, color 0.2s ease-out;
+
+  &.forceHide {
+    position: absolute;
+    top: 0;
+    transition: background-color 0.2s ease-out, color 0.2s ease-out;
+  }
 }
 
 .animateFix {

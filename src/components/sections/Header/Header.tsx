@@ -9,10 +9,11 @@ import activeHover from '@/utils/text_hover_effect'
 
 type Props = { 
   theme: Theme,
-  stickyHeader: boolean
+  stickyHeader: boolean,
+  footerAppear: boolean
 }
 
-const Header: FC<Props> = ({stickyHeader = false, theme = 'dark'}) => {
+const Header: FC<Props> = ({stickyHeader = false, theme = 'dark', footerAppear}) => {
 
   const [fixedHeader, setFixedHeader] = useState(false)
   const [animateHeader, setAnimateHeader] = useState(false)
@@ -25,7 +26,7 @@ const Header: FC<Props> = ({stickyHeader = false, theme = 'dark'}) => {
           setTimeout(() => {
             setAnimateHeader(true)
           }, 500)
-        }else {
+        } else {
           setFixedHeader(false)
           setAnimateHeader(false)
         }
@@ -39,7 +40,7 @@ const Header: FC<Props> = ({stickyHeader = false, theme = 'dark'}) => {
     }, [])
 
   return (
-    <div className={cn(styles.root, stickyHeader || fixedHeader ? styles.fixed : '', animateHeader ? styles.animateFix : '', styles[theme])}>
+    <div className={cn(styles.root, stickyHeader || fixedHeader ? styles.fixed : '', animateHeader ? styles.animateFix : '', styles[theme], footerAppear ? styles.forceHide : '')}>
       <div className="container">
           <div className="grid">
             <div className='span-12'>

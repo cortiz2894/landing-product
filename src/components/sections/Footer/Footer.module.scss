@@ -7,7 +7,7 @@
 .root {
   font-size: var(--size-sm);
   line-height: calc(var(--size-em) - 2px);
-  min-height: 100vh;
+  min-height: 95vh;
   &.dark {
     background-color: var(--black);
     color: var(--white);
@@ -15,5 +15,27 @@
   &.light {
     background-color: var(--white);
     color: var(--black);
+  }
+}
+
+.textBasic {
+  font-size: var(--size-lg);
+}
+
+.textAnimation {
+  display: flex;
+  justify-content: center;
+  // margin-top: 5em;
+  position: absolute;
+  
+  h3 {
+    font-size: 18vw;
+  }
+}
+
+.socialMedia {
+  line-height: var(--size-md);
+  .textBasic {
+    font-size: var(--size-md);
   }
 }

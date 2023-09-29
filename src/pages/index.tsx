@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer'
 
 export default function Home() {
   const [stopMove, setStopMove] = useState<boolean>(false)
+
   const { ref, inView } = useInView({
 		threshold: 0.3,
 		triggerOnce: false
@@ -14,7 +15,7 @@ export default function Home() {
   const theme = inView ? 'light' : 'dark'
 
   return (
-    <Layout stickyHeader={stopMove} theme={theme}>
+    <Layout stickyHeader={stopMove} theme={theme} footerAppear={inView}>
         <Hero stopMove={stopMove}/>
         <Presentation isTextInScreen={setStopMove}/>
         <TextMarquee speed={1} direction='left' content='Mind the business, we build the product.' theme={theme}/>
