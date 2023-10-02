@@ -1,0 +1,33 @@
+// .container {
+// 	padding: 25px;
+// 	background: black;
+// 	margin: 0 auto;	
+// }
+
+
+.line {
+	stroke-dasharray: 4380;
+	stroke-dashoffset: 4380;
+    stroke-width: 1;
+	// animation: dash 10s ease-in-out forwards;
+}
+
+@keyframes dash {
+  0% {
+    stroke-width: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-width: 1;
+  }
+}
+
+@keyframes wink {
+  0% {
+    opacity: 0;
+  }
+	
+  100% {
+    opacity: 1;
+  }
+}

@@ -3,6 +3,9 @@ import cn from 'clsx'
 import styles from './Presentation.module.scss'
 import { useInView } from 'react-intersection-observer'
 import { TextReveal } from '@/components/shared'
+import {LineSvgKeyboard} from '@/components/shared/'
+import { useIsomorphicLayoutEffect } from 'usehooks-ts'
+import { gsap } from '@/utils/gsap'
 
 type Props = {
 	isTextInScreen : Dispatch<SetStateAction<boolean>>,
@@ -18,6 +21,7 @@ const Presentation: FC<Props> = ( { isTextInScreen }) => {
 	useEffect( ()=> {
 		isTextInScreen(inView)
 	})
+
 
     return (
       <div className={styles.root}>
@@ -39,8 +43,11 @@ const Presentation: FC<Props> = ( { isTextInScreen }) => {
 							]} /> */}
 							{/* <h4 className={styles.copy}></h4> */}
 						</div>
-						<div className='span-12'>
-							<img src={'/synth-linewar.png'} className={styles.linewar}/>
+						<div className='span-12' id='lineSvg'>
+							{/* <img src={'/synth-linewar.png'} className={styles.linewar}/> */}
+							<div className={styles.linewar}>
+								<LineSvgKeyboard />
+							</div>
 						</div>
 						<div className='start-9 span-4'>
 							<p className={styles.description}>● A 3340 voltage controlled oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable sound. Make it snap and sing with responsive analog envelopes, modulation, and portamento, or bring in external CV for deeper VCO and VCF control.</p>
