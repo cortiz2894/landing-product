@@ -65,5 +65,9 @@
     "rules": {
       "spaced-comment": "warn"
     }
+  },
+  "resolutions": {
+    "**/@types/react": "^17.0.21",
+    "**/@types/react-dom": "^17.0.9"
   }
 }
