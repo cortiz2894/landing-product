@@ -17,6 +17,7 @@ const Hero: FC<Props> = ({stopMove}) => {
   const [disableModelScroll, setDisableModelScroll] = useState<boolean>(false)
 
   const $ref = useRef<HTMLDivElement | null>(null)
+  const containerText = useRef<HTMLDivElement | null>(null)
   const lenis = useLenis(({ scroll }: { scroll: number }) => {
     setHasScrolled(scroll > 0)
   })
@@ -29,14 +30,15 @@ const Hero: FC<Props> = ({stopMove}) => {
       console.log(hasScrolled)
     }
   }, [lenis, hasScrolled, showAnimation])
-
+  
   //Letters Background Animation
   useIsomorphicLayoutEffect(() => {
-      const container = $ref.current
-      if (!container) return
+    const container = $ref.current
+    if (!container || !showAnimation) return
 
-      const letter = gsap.utils.toArray(container.querySelectorAll('h2'))
-      if(hasScrolled) {
+    const letter = gsap.utils.toArray(container.querySelectorAll('h2'))
+    
+      if(hasScrolled && showAnimation) {
         gsap.timeline()
         .to(letter, {
           translateY: -1000,
@@ -74,6 +76,62 @@ const Hero: FC<Props> = ({stopMove}) => {
     }
   }, [hasScrolled])
 
+//loading text animation
+useIsomorphicLayoutEffect(() => {
+  const tl = gsap.timeline({onComplete: () => {setShowAnimation(true)}})
+  const container = $ref.current
+  const textRef = containerText.current
+  if (!container || !textRef) return
+
+  const letter = gsap.utils.toArray(container.querySelectorAll('h2'))
+  //Loading animation
+  const itemText = gsap.utils.toArray(textRef.querySelectorAll('h4'))
+
+  tl.to(itemText, {
+    opacity: 1,
+    stagger: 0.3,
+    x: -30,
+    ease: '0.7, 0.7, 0.7, 0.7',
+    // ease: Back.easeOut.config(1.7),
+    overwrite: true,
+    duration: 1.4,
+    // onComplete: () => {
+    //   tl.reverse()
+    // }
+  })
+  .to(textRef, {
+    x: -60,
+    duration: 0.4,
+  })
+  .to(itemText, {
+    stagger: 0.2,
+    duration: 0.6,
+    opacity: 0,
+    ease: "power2.inOut",
+  }, '<')
+  .to(letter, {
+    // stagger: 0.1,
+    stagger: 0.05,
+    opacity: 1,
+    translateY: 0,
+    duration: 1,
+    ease: "power2.inOut",
+  }, '>-0.5')
+  .to('.gltb-canvas', {
+    opacity: 1,
+    translateY: 0,
+    ease: "power2.inOut",
+    duration: 0.5,
+  },'>-0.2')
+  .to('.lineBackground', {
+    stagger: 0.15,
+    opacity: 1,
+    left: 0,
+    duration: 0.5,
+    ease: "power2.inOut",
+  },'>-0.5')
+}, [])
+
   //Scroll direction
   // useIsomorphicLayoutEffect(() => {
   //   let lastScrollTop = 0;
@@ -100,11 +158,15 @@ const Hero: FC<Props> = ({stopMove}) => {
   // }, [])
 
     return (
-      <div className={styles.root}>
-        <div className={cn(styles.canvas, !stopMove && !disableModelScroll ? styles.fixed : '')}>
+      <div className={cn(styles.root, styles.loaderActive)}>
+        <div className={styles.loadingText} ref={containerText}>
+          <h4>Random</h4>
+          <h4>text</h4>
+          <h4>loading</h4>
+        </div>
+        <div className={cn(styles.canvas, !stopMove && !disableModelScroll ? styles.fixed : '', 'gltb-canvas')}>
           <KeyboardScene/>
         </div>
-        {/* {@ts-ignore} */}
         <div className={styles.backgroundText} ref={$ref}>
           <div>
             <h2 className={styles.text}>H</h2>
@@ -117,21 +179,21 @@ const Hero: FC<Props> = ({stopMove}) => {
         </div>
         <div className={styles.backgroundLayout}>
           <div className='container'>
-            <div className={styles.item}>
+            <article className={cn(styles.item, 'lineBackground')} >
               <div className={styles.cross}></div>
               <div className={styles.line}></div>
               <div className={styles.cross}></div>
-            </div>
-            <div className={styles.item}>
+            </article>
+            <article className={cn(styles.item, 'lineBackground')} >
               <div className={styles.cross}></div>
               <div className={styles.line}></div>
               <div className={styles.cross}></div>
-            </div>
-            <div className={styles.item}>
+            </article>
+            <article className={cn(styles.item, 'lineBackground')} >
               <div className={styles.cross}></div>
               <div className={styles.line}></div>
               <div className={styles.cross}></div>
-            </div>
+            </article>
           </div>
         </div>
       </div>

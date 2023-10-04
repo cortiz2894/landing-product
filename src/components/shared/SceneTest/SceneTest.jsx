@@ -1,5 +1,5 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, useProgress, Html } from "@react-three/drei";
 import React, { useRef, useLayoutEffect, useState} from 'react'
 import gsap from "gsap";
 import { animated } from "@react-spring/three";
@@ -10,6 +10,7 @@ export const NB_FLOORS = 2
 
 function SceneTest(props) {
   const { nodes, materials } = useGLTF("/keys_cleaner.glb");
+  const { progress } = useProgress()
   const ref = useRef()
   const keyboardRef = useRef()
   const tl = useRef()
@@ -38,6 +39,7 @@ function SceneTest(props) {
         sh = 'scrollHeight';
     return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 2;
   }
+  
 
   useFrame(({ clock }, state)=> {
     
@@ -67,6 +69,7 @@ function SceneTest(props) {
   })
   
   useLayoutEffect( () => {
+
     tl.current = gsap.timeline()
 
     // VERTICAL ANIMATION

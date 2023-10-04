@@ -1,6 +1,6 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
-import React, { useRef, useLayoutEffect, useState} from 'react'
+import { useGLTF, useProgress } from "@react-three/drei";
+import React, { useRef, useLayoutEffect, useState, useEffect} from 'react'
 import gsap from "gsap";
 import { animated } from "@react-spring/three";
 import * as THREE from "three";
@@ -15,6 +15,7 @@ function SceneTest(props) {
   const keyboardRef = useRef()
   const tl = useRef()
   const isHovered = useRef(false)
+  const { progress } = useProgress()
 
   const [video] = useState(() => {
     const vid = document.createElement("video");
@@ -47,7 +48,6 @@ function SceneTest(props) {
 
 
   useLayoutEffect( () => {
-    console.log('props.inView: ', props.inView)
     tl.current = gsap.timeline()
 
     // if(props.inView) {
