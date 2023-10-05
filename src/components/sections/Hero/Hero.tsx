@@ -44,10 +44,11 @@ const Hero: FC<Props> = ({stopMove}) => {
           yPercent: -150,
           stagger: 0.05,
           scrollTrigger: {
-            trigger: '#presentation',
+            trigger: '#presentationContainer',
             start: () => "top 90%",
             end: () => "top 35%",
             scrub: 0.05,
+            markers: true
           }
         }
       );

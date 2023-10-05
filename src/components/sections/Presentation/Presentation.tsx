@@ -24,9 +24,9 @@ const Presentation: FC<Props> = ( { isTextInScreen }) => {
 
 
     return (
-      <div className={styles.root}>
+      <div className={styles.root} id={'presentationContainer'}>
 		<div id={'presentation'} className={styles.blackScroll}></div>
-        <div className='container'>
+        <div className='container' >
 					<div className='grid' >
 						<div className='span-12' ref={ref}>
 							<TextReveal text={[{text : "HiKeys―1977"}]} align={'center'} size={'large'}/>
