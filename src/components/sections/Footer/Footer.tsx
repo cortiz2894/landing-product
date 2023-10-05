@@ -6,12 +6,14 @@ import styles from './Footer.module.scss'
 import { ArrowLink, VisuallyHidden } from '@/components/shared'
 import { useIsomorphicLayoutEffect } from 'usehooks-ts'
 import { useRef } from 'react'
+import KeyboardScene from '@/components/shared/SceneTest/SceneTest'
+import Parallax from '../Parallax/Parallax'
 
 type Props = {
-  theme: 'dark' | 'light'
+  theme?: 'dark' | 'light'
 }
 
-const Footer = ({ theme = 'dark' }: Props) => {
+const Footer = ({ theme = 'light' }: Props) => {
   const ref = useRef<HTMLDivElement>(null)
 
   useIsomorphicLayoutEffect(() => {
@@ -71,6 +73,10 @@ const Footer = ({ theme = 'dark' }: Props) => {
             <h3 className={styles.bottomLettering}>9</h3>
             <h3 className={styles.bottomLettering}>7</h3>
             <h3 className={styles.bottomLettering}>7</h3>
+          </div>
+          <div className={styles.canvasFoot}>
+            <div className={styles.blurBackdrop}></div>
+            <KeyboardScene position={[-Math.PI / -2, 0, 0.4]} autoRotate={true}/>
           </div>
         </div>
       </div>

@@ -13,9 +13,7 @@ type Props = {
 const Hero: FC<Props> = ({stopMove}) => {
   const [showAnimation, setShowAnimation] = useState<boolean>(false)
   const [hasScrolled, setHasScrolled] = useState(false)
-  // const [scrollDirection, setScrollDirection] = useState<string>('top')
   const [disableModelScroll, setDisableModelScroll] = useState<boolean>(false)
-
   const $ref = useRef<HTMLDivElement | null>(null)
   const containerText = useRef<HTMLDivElement | null>(null)
   const lenis = useLenis(({ scroll }: { scroll: number }) => {
@@ -23,43 +21,38 @@ const Hero: FC<Props> = ({stopMove}) => {
   })
 
   useIsomorphicLayoutEffect(() => {
-    if (!lenis) return    
+    if (!lenis || showAnimation ) return
     lenis?.stop() 
-    if(showAnimation === true) {
-      lenis?.start() 
-      console.log(hasScrolled)
-    }
-  }, [lenis, hasScrolled, showAnimation])
+  }, [hasScrolled])
   
   //Letters Background Animation
   useIsomorphicLayoutEffect(() => {
     const container = $ref.current
-    if (!container || !showAnimation) return
+    if (!container || !showAnimation ) return
+    console.log('lenis start')
+    lenis.start()
 
     const letter = gsap.utils.toArray(container.querySelectorAll('h2'))
     
-      if(hasScrolled && showAnimation) {
-        gsap.timeline()
-        .to(letter, {
-          translateY: -1000,
-          stagger: 0.1,
-          opacity: 0,
-          ease: '0.48, 0.01, 0.27, 1.00',
-          overwrite: true,
-          onComplete: () => {
-            setShowAnimation(true)
-          }
-        })
-      } else {
-        gsap.timeline()
-        .to(letter, {
-          translateY: 0,
-          stagger: 0.3,
-          opacity: 1,
-          ease: '0.48, 0.01, 0.27, 1.00',
-          overwrite: true
-        })
-      }
+    if(hasScrolled) {
+      gsap.timeline()
+      .to(letter, {
+        translateY: -1000,
+        stagger: 0.1,
+        opacity: 0,
+        ease: '0.48, 0.01, 0.27, 1.00',
+        overwrite: true,
+      })
+    } else {
+      gsap.timeline()
+      .to(letter, {
+        translateY: 0,
+        stagger: 0.3,
+        opacity: 1,
+        ease: '0.48, 0.01, 0.27, 1.00',
+        overwrite: true
+      })
+    }
     // Check if scroll after Hero
     const checkPassHero = () => {
       if (window.scrollY > (container.offsetTop + container.offsetHeight)) {
@@ -74,11 +67,11 @@ const Hero: FC<Props> = ({stopMove}) => {
       window.removeEventListener("scroll", checkPassHero);
 
     }
-  }, [hasScrolled])
+  }, [showAnimation, hasScrolled])
 
 //loading text animation
 useIsomorphicLayoutEffect(() => {
-  const tl = gsap.timeline({onComplete: () => {setShowAnimation(true)}})
+  const tl = gsap.timeline()
   const container = $ref.current
   const textRef = containerText.current
   if (!container || !textRef) return
@@ -129,6 +122,7 @@ useIsomorphicLayoutEffect(() => {
     left: 0,
     duration: 0.5,
     ease: "power2.inOut",
+    onComplete: () => { setShowAnimation(true )}
   },'>-0.5')
 }, [])
 
@@ -165,7 +159,7 @@ useIsomorphicLayoutEffect(() => {
           <h4>loading</h4>
         </div>
         <div className={cn(styles.canvas, !stopMove && !disableModelScroll ? styles.fixed : '', 'gltb-canvas')}>
-          <KeyboardScene/>
+          <KeyboardScene isHome={true}/>
         </div>
         <div className={styles.backgroundText} ref={$ref}>
           <div>

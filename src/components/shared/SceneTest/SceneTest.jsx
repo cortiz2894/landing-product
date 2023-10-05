@@ -66,12 +66,17 @@ function SceneTest(props) {
     //     ref.current.scale.z -= 0.05;
     //   }
     // }
+    if(props.autoRotate) {
+      keyboardRef.current.rotation.x = 0
+      keyboardRef.current.rotation.y = 0
+      // keyboardRef.current.rotation.z = 0
+      keyboardRef.current.rotation.z = clock.getElapsedTime() / 2
+    }
   })
-  
+
   useLayoutEffect( () => {
 
-    tl.current = gsap.timeline()
-
+    tl.current = gsap.timeline({paused: !props.isHome})
     // VERTICAL ANIMATION
     tl.current.to(
       ref.current.position, 
@@ -437,7 +442,7 @@ function Rig() {
   })
 }
 
-export default function KeyboardScene() {
+export default function KeyboardScene({position = [-Math.PI / -2, 0, 0], autoRotate = false, isHome = false}) {
   
   return (
     <Canvas >
@@ -446,7 +451,7 @@ export default function KeyboardScene() {
 
 </ScrollControls> */}
       <directionalLight position={[1, 2.0, 4.4]} intensity={0.6} />
-      <SceneTest rotation={[-Math.PI / -2, 0, 0]} scale={1} />
+      <SceneTest rotation={position} scale={1} autoRotate={autoRotate} isHome={isHome}/>
       <Rig />
     </Canvas>
     

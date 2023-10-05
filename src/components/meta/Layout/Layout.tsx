@@ -6,6 +6,7 @@ import  { ArrowLink } from '@/components/shared'
 import { Header, Footer } from '@/components/sections'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/utils/constants'
 import { Theme } from '@/utils/types'
+import { useInView } from 'react-intersection-observer'
 
 type Meta = {
   title: string | null
@@ -19,11 +20,14 @@ type Props = {
   children: React.ReactNode
   theme?: Theme
   stickyHeader: boolean 
-  footerAppear: boolean
 }
 
-const Layout = ({ meta, children, theme = 'dark', stickyHeader, footerAppear }: Props) => {
+const Layout = ({ meta, children, theme = 'dark', stickyHeader }: Props) => {
   const { asPath, events } = useRouter()
+  const { ref, inView } = useInView({
+		threshold: 0.3,
+		triggerOnce: false
+	})
 
   const isContact = asPath === '/contact'
   const isPrivacy = asPath === '/privacy-policy'
@@ -70,11 +74,15 @@ const Layout = ({ meta, children, theme = 'dark', stickyHeader, footerAppear }: 
       </Head>
 
       <Lenis root>
-        <Header theme={theme} stickyHeader={stickyHeader} footerAppear={footerAppear}/>
+        <Header stickyHeader={stickyHeader} theme={inView ? 'light' : 'dark'} footerAppear={inView}/>
         <main>
           {children}
         </main>
-        <Footer theme={theme} />
+        <div ref={ref}>
+          <Footer 
+          // theme={inView ? 'light' : 'dark'} 
+          />
+        </div>
       </Lenis>
     </>
   )

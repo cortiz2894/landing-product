@@ -9,12 +9,15 @@
   line-height: calc(var(--size-em) - 2px);
   min-height: 900px;
   position: relative;
+  height: 99.9vh;
+  margin-top: 5em;
+  
   &.dark {
-    background-color: var(--black);
+    // background-color: var(--black);
     color: var(--white);
   }
   &.light {
-    background-color: var(--white);
+    // background-color: var(--white);
     color: var(--black);
   }
 }
@@ -39,4 +42,22 @@
   .textBasic {
     font-size: var(--size-md);
   }
+}
+
+.canvasFoot {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: -1;
+}
+
+.blurBackdrop {
+  position: absolute;
+  z-index: 1;
+  height: 100vh;
+  width: 100%;
+  background: #ffffff59;
+  top: 0px;
+  backdrop-filter: blur(8px);
 }
