@@ -47,8 +47,7 @@ const Hero: FC<Props> = ({stopMove}) => {
             trigger: '#presentationContainer',
             start: () => "top 90%",
             end: () => "top 35%",
-            scrub: 0.05,
-            markers: true
+            scrub: 0.05
           }
         }
       );
