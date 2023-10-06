@@ -105,6 +105,7 @@
     position: absolute;
     top: 0;
     z-index: 9;
+    pointer-events: none;
     h4 {
         font-size: var(--size-lg);
         margin-right: 0.3em;

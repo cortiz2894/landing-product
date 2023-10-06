@@ -57,7 +57,7 @@ const Header: FC<Props> = ({stickyHeader = false, theme = 'dark', footerAppear})
                 <nav className={cn(styles.nav)}>
                   <div className='grid'>
                     <div className='span-4'>
-                      <div className={cn(styles.logo, 'text-hover-effect')}>
+                      <div className={cn(styles.logo)}>
                         <Link href="/">
                           HiKeys―1977
                         </Link>

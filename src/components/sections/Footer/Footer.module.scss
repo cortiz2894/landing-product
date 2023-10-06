@@ -1,17 +1,10 @@
-// @import url('@/components/styles/_base.scss');
-// @import url('@/components/styles/_core.scss');
-// @import url('@/components/styles/_grid.scss');
-// @import url('@/components/styles/globals.scss');
-// @import url('@/components/styles/_utils.scss');
-
 .root {
   font-size: var(--size-sm);
   line-height: calc(var(--size-em) - 2px);
-  min-height: 900px;
-  position: relative;
-  height: 99.9vh;
-  margin-top: 5em;
-  
+  height: 100vh;
+  padding-top: 1em;
+  position: sticky;
+  bottom: 0;
   &.dark {
     // background-color: var(--black);
     color: var(--white);
@@ -24,23 +17,68 @@
 
 .textBasic {
   font-size: var(--size-lg);
+  line-height: var(--size-xl);
 }
 
 .textAnimation {
   display: flex;
   justify-content: center;
-  margin-top: 5em;
   position: relative;
   
   h3 {
-    font-size: 18vw;
+    font-size: 14vw;
   }
+}
+
+.containerFlex {
+  height: 100%;
+}
+
+.gridFlex {
+  position: relative;
+  height: 100%;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .socialMedia {
   line-height: var(--size-md);
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding-top: 0em;
+  padding-bottom: 1em;
+  left: 0;
+  margin: 0;
+  padding-right: var(--grid-gap);
+  padding-left: var(--grid-gap);
+  overflow: hidden;
+
+  .border {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    height: 1px;
+    background: black;
+    left: 0;
+  }
   .textBasic {
     font-size: var(--size-md);
+  }
+  .item {
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        margin-right: 10px;
+      }
+    }
   }
 }
 
@@ -49,6 +87,7 @@
   height: 100%;
   width: 100%;
   top: 0;
+  left: 0px;
   z-index: -1;
 }
 

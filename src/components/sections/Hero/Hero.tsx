@@ -32,7 +32,6 @@ const Hero: FC<Props> = ({stopMove}) => {
     if (!container || !showAnimation ) return    
     const letter = gsap.utils.toArray(container.querySelectorAll('h2'))      
       let ctx = gsap.context(() => {
-      // put all your GSAP/ScrollTrigger code inside here!
       gsap.fromTo(
         letter,
         {
@@ -42,21 +41,18 @@ const Hero: FC<Props> = ({stopMove}) => {
         {
           opacity: 0,
           yPercent: -150,
-          stagger: 0.05,
+          stagger: 0.08,
           scrollTrigger: {
             trigger: '#presentationContainer',
             start: () => "top 90%",
             end: () => "top 35%",
-            scrub: 0.05
+            scrub: 0.5
           }
         }
       );
-      // gsap.set('.animate-text', {
-      //   opacity: 1
-      // });
     });
 
-    return () => ctx.revert(); // <-- cleanup!
+    return () => ctx.revert();
   })
   
   useIsomorphicLayoutEffect(() => {
@@ -64,26 +60,6 @@ const Hero: FC<Props> = ({stopMove}) => {
     if (!container || !showAnimation ) return
     lenis.start()
     
-    //Letters Old Animation
-    // const letter = gsap.utils.toArray(container.querySelectorAll('h2'))
-    
-    // if(hasScrolled) {
-    //   gsap.to(letter, {
-    //     translateY: -1000,
-    //     stagger: 0.1,
-    //     opacity: 0,
-    //     ease: '0.48, 0.01, 0.27, 1.00',
-    //     overwrite: true,
-    //   })
-    // } else {
-    //   gsap.to(letter, {
-    //     translateY: 0,
-    //     stagger: 0.3,
-    //     opacity: 1,
-    //     ease: '0.48, 0.01, 0.27, 1.00',
-    //     overwrite: true
-    //   })
-    // }
     // Check if scroll after Hero
     const checkPassHero = () => {
       if (window.scrollY > (container.offsetTop + container.offsetHeight)) {
@@ -116,12 +92,8 @@ useIsomorphicLayoutEffect(() => {
     stagger: 0.3,
     x: -30,
     ease: '0.7, 0.7, 0.7, 0.7',
-    // ease: Back.easeOut.config(1.7),
     overwrite: true,
     duration: 1.4,
-    // onComplete: () => {
-    //   tl.reverse()
-    // }
   })
   .to(textRef, {
     x: -60,
@@ -134,7 +106,6 @@ useIsomorphicLayoutEffect(() => {
     ease: "power2.inOut",
   }, '<')
   .to(letter, {
-    // stagger: 0.1,
     stagger: 0.05,
     opacity: 1,
     translateY: 0,
@@ -156,31 +127,6 @@ useIsomorphicLayoutEffect(() => {
     onComplete: () => { setShowAnimation(true )}
   },'>-0.5')
 }, [])
-
-  //Scroll direction
-  // useIsomorphicLayoutEffect(() => {
-  //   let lastScrollTop = 0;
-
-  //   const scrollDirecion = () => {
-  //       var st = window.pageYOffset || document.documentElement.scrollTop; 
-  //       if (st > lastScrollTop) {
-  //           // downscroll code
-  //           setScrollDirection('down')
-  //       } else if (st < lastScrollTop) {
-  //           // upscroll code
-  //           setScrollDirection('up')
-
-  //       } // else was horizontal scroll
-  //       lastScrollTop = st <= 0 ? 0 : st; 
-  //   }
-
-  //   window.addEventListener("scroll", scrollDirecion, false);
-
-  //   return () => {
-  //     removeEventListener("scroll", scrollDirecion)
-  //   }
-
-  // }, [])
 
     return (
       <div className={cn(styles.root, styles.loaderActive)}>
