@@ -36,15 +36,8 @@ const Presentation: FC<Props> = ( { isTextInScreen }) => {
 								<TextReveal text={[{text : "Designed with musicians in mind, the user-friendly layout"}]} align={'left'}/>
 								<TextReveal text={[{text : "ensures that you spend more time creating and less time navigating complex menus."}]} align={'left'}/>
 							</div>
-							{/* <TextReveal align='left' text={[
-								{ text : "Experience seamless control and effortless navigation with our synth keyboards intuitive interface." },
-								{ text : "Designed with musicians in mind, the user-friendly layout" },
-								{ text: "ensures that you spend more time creating and less time navigating complex menus." }
-							]} /> */}
-							{/* <h4 className={styles.copy}></h4> */}
 						</div>
 						<div className='span-12' id='lineSvg'>
-							{/* <img src={'/synth-linewar.png'} className={styles.linewar}/> */}
 							<div className={styles.linewar}>
 								<LineSvgKeyboard />
 							</div>

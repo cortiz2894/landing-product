@@ -1,6 +1,7 @@
 .root {
     padding: 3em 0;
     transition: background-color 0.2s ease-out, color 0.2s ease-out;
+    overflow: hidden;
     p {
         margin-top: 1em;
     }
@@ -23,7 +24,7 @@
 }
 
 .item {
-    border: 1px solid #727272;
+    // border: 1px solid #727272;
     min-height: auto;
     position: relative;
     opacity: 0;

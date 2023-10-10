@@ -26,16 +26,16 @@ const Leadership: FC<Props> = ({theme}) => {
         const item = gsap.utils.toArray(container.querySelectorAll('article'))
 
         if(inView) {
-            gsap.timeline()
-    
-            .to(item, {
+            gsap            
+            .fromTo(item, {
+                opacity: 0,
+                y: 200
+            },{
               opacity: 1,
-              stagger: 0.5,
+              y: 0,
+              stagger: 0.3,
               ease: '0.48, 0.01, 0.27, 1.00',
               overwrite: true,
-            //   onComplete: () => {
-            //     setShowAnimation(true)
-            //   }
             })
         }
 
@@ -53,9 +53,7 @@ const Leadership: FC<Props> = ({theme}) => {
                             A 3340 voltage controlled oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable.
                             Oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable
                         </p>
-                        <div className={styles.cross}></div>
                         <div className={styles.line}></div>
-                        <div className={styles.cross}></div>
                     </article>
                 </div>
                 <div className='span-3'>
@@ -65,9 +63,7 @@ const Leadership: FC<Props> = ({theme}) => {
                             A 3340 voltage controlled oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable.
                             Oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable
                         </p>
-                        <div className={styles.cross}></div>
                         <div className={styles.line}></div>
-                        <div className={styles.cross}></div>
                     </article>
                 </div>
                 <div className='span-3'>
@@ -77,9 +73,7 @@ const Leadership: FC<Props> = ({theme}) => {
                             A 3340 voltage controlled oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable.
                             Oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable
                         </p>
-                        <div className={styles.cross}></div>
                         <div className={styles.line}></div>
-                        <div className={styles.cross}></div>
                     </article>
                 </div>
                 <div className='span-3'>
@@ -89,9 +83,7 @@ const Leadership: FC<Props> = ({theme}) => {
                             A 3340 voltage controlled oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable.
                             Oscillator feeds into a 4-pole OTA filter that makes for an iconic and unmistakable
                         </p>
-                        <div className={styles.cross}></div>
                         <div className={styles.line}></div>
-                        <div className={styles.cross}></div>
                     </article>
                 </div>
             </div>

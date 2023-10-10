@@ -131,9 +131,9 @@ useIsomorphicLayoutEffect(() => {
     return (
       <div className={cn(styles.root, styles.loaderActive)}>
         <div className={styles.loadingText} ref={containerText}>
-          <h4>Random</h4>
-          <h4>text</h4>
-          <h4>loading</h4>
+          <h4>Welcome</h4>
+          <h4>to</h4>
+          <h4>HiKeys</h4>
         </div>
         <div className={cn(styles.canvas, !stopMove && !disableModelScroll ? styles.fixed : '', 'gltb-canvas')}>
           <KeyboardScene isHome={true}/>

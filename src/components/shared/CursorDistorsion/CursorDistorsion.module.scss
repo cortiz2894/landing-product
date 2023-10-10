@@ -1,0 +1,29 @@
+.jellyBlob {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    mix-blend-mode: difference;
+    background-color: white;
+    border-radius: 150px;
+    transform-origin: 50% 50%;
+    transform: translate(-50%, -50%);
+    will-change: width, height, transform, border;
+    z-index: 999;
+    pointer-events: none;
+  }
+  /* Text Inside Jelly Blob */
+  .insideText {
+    width: 100%;
+    opacity: 1;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 600;
+  }

@@ -20,6 +20,10 @@
   --size-xl: max(2em, calc(64px + (100vw - 1440px) / 22)); // 64px
 }
 
+* {
+  cursor: none;
+}
+
 html {
   box-sizing: border-box;
   font-family: var(--font-primary);

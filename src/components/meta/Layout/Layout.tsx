@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useIsomorphicLayoutEffect } from 'usehooks-ts'
 import { Lenis, useLenis } from '@studio-freight/react-lenis'
-import  { ArrowLink } from '@/components/shared'
+import  { ArrowLink, CursorDistorsion } from '@/components/shared'
 import { Header, Footer } from '@/components/sections'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/utils/constants'
 import { Theme } from '@/utils/types'
@@ -74,6 +74,7 @@ const Layout = ({ meta, children, theme = 'dark', stickyHeader }: Props) => {
       </Head>
 
       <Lenis root>
+        <CursorDistorsion />
         <Header stickyHeader={stickyHeader} theme={inView ? 'light' : 'dark'} footerAppear={inView}/>
         <main>
           {children}

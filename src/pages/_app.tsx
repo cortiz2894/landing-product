@@ -6,7 +6,6 @@ import { Provider } from 'react-wrap-balancer'
 import { useEffect } from 'react'
 import localFont from 'next/font/local'
 
-
 // const kayakSans = localFont({
 //   fallback: ['system-ui', 'arial'],
 //   src: [

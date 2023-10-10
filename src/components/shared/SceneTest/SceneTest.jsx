@@ -91,7 +91,7 @@ function SceneTest(props) {
       '#presentation',
       {
         duration: 2.5,
-        translateY: -400
+        y: -400
       },
       0
     )
