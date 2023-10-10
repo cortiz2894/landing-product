@@ -81,6 +81,13 @@ const CursorDistorsion = () => {
 
   // Run on Mouse Move
   useLayoutEffect(() => {
+    const hoverLink = gsap.timeline({paused: true})
+
+    hoverLink.to(jellyRef.current, {
+        width: 200,
+        height: 200,
+        duration: 0.4
+    })
     // Caluclate Everything Function
     const setFromEvent = (e) => {
       // Mouse X and Y
@@ -101,7 +108,12 @@ const CursorDistorsion = () => {
 
       loop();
     };
-
+    [...document.querySelectorAll('a')].forEach(el => {
+        //@ts-ignore
+        el.addEventListener('mouseenter', () => hoverLink.restart());
+        //@ts-ignore
+        el.addEventListener('mouseleave', () => hoverLink.reverse());
+    });
     window.addEventListener("mousemove", setFromEvent);
     return () => {
       window.removeEventListener("mousemove", setFromEvent);
