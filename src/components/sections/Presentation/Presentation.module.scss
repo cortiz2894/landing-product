@@ -1,3 +1,5 @@
+@import '../../../styles/core';
+
 .root {
     background: black;
     padding-top: 95vh;
@@ -25,14 +27,21 @@
 
 .linewar {
     width: 50%;
+
+    @include md-down {
+        width: 100%;
+    }
 }
 
 .paragrapht {
     text-transform: uppercase;
-    margin-top: 240px;
-    margin-bottom: 240px;
-    letter-spacing: 2px;
-    width: 50%;
+    margin-top: 6em;
+    margin-bottom: 6em;
+    letter-spacing: 0.2em;
+
+    @include md-down {
+        width: 100%;
+    }
 }
 
 .description {
@@ -40,4 +49,10 @@
     line-height: 35.5px;
     color: var(--white);
     margin-bottom: 15px;
+
+    @include md-down {
+        overflow: hidden;
+        font-size: 1.5em;
+        line-height: 1.2em;
+    }
 }

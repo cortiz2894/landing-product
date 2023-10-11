@@ -46,7 +46,7 @@ const Leadership: FC<Props> = ({theme}) => {
         <div className={styles.backgroundLayout}>
           <div className='container'>
             <div className='grid' ref={$ref}>
-                <div className='span-3'>
+                <div className='span-12 span-md-3'>
                     <article className={cn(styles.item, 'item')}>
                         <img src='/synth1.png' />
                         <p>
@@ -56,7 +56,7 @@ const Leadership: FC<Props> = ({theme}) => {
                         <div className={styles.line}></div>
                     </article>
                 </div>
-                <div className='span-3'>
+                <div className='span-12 span-md-3'>
                     <article className={cn(styles.item, 'item')}>
                         <img src='/synth2.png' />
                         <p>
@@ -66,7 +66,7 @@ const Leadership: FC<Props> = ({theme}) => {
                         <div className={styles.line}></div>
                     </article>
                 </div>
-                <div className='span-3'>
+                <div className='span-12 span-md-3'>
                     <article className={cn(styles.item, 'item')}>
                         <img src='/synth3.png' />
                         <p>
@@ -76,7 +76,7 @@ const Leadership: FC<Props> = ({theme}) => {
                         <div className={styles.line}></div>
                     </article>
                 </div>
-                <div className='span-3'>
+                <div className='span-12 span-md-3'>
                     <article className={cn(styles.item, 'item')}>
                         <img src='/synth4.png' />
                         <p>

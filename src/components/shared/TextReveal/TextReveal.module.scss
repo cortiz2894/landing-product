@@ -1,31 +1,7 @@
-// .titleHide {
-//     overflow: hidden;
-// }
-
-// .titleReveal {
-//     position: relative;
-//     overflow: hidden;
-//     margin-bottom: 2.5rem;
-
-//     & > h1 {
-//         transition: transform 1s cubic-bezier(0.48, 0.01, 0.27, 1);
-//         transform: translateY(0);
-// 				transition-delay: 0.5s;
-//     }   
-// }
-
-// .title {
-//     transform: translateY(var(--size-xl));
-//     padding-bottom: 5px;
-//     // color: white;
-//     text-align: center;
-//     color: var(--white);
-//     font-size: 128px;
-//     margin-top: 125px;
-// }
+@import '../../../styles/core';
 
 .containers {
-	width: 100vw;
+	width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,6 +14,11 @@
     span {
       font-size: 2.2rem;
       line-height: 3.2rem;
+      
+      @include md-down {
+        font-size: 1.4em;
+        line-height: 1.2em;
+      }
     }
   }
     span {
@@ -46,9 +27,16 @@
       line-height: 9.2rem;
       position: absolute;
       //if you need to center the text
-
+      @include md-down {
+        font-size: 3em;
+      }
       &.center {
         left: calc(50% - 25vw);
+        @include md-down {
+          left: 0;
+          text-align: center;
+          width: 100%;
+        }
       }
     }
 }

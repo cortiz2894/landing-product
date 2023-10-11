@@ -1,3 +1,5 @@
+@import '../../../styles/core';
+
 .root {
     height: calc(100vh - 100px);
     width: 100%;
@@ -30,6 +32,10 @@
     line-height: 0.9em;
     font-size: 28em;
     transform: translateY(500px);
+
+    @include md-down {
+        font-size: 9em;
+    }
 }
 
 .backgroundLayout {
@@ -47,6 +53,9 @@
     top: 0;
     display: flex;
     align-items: center;
+    @include md-down {
+        overflow: hidden;
+    }
 }
 .item {
     width: 100%;
@@ -85,6 +94,10 @@
     .backgroundText {
         h2 {
             opacity: 0;
+            @include md-down {
+                left: 0;
+                opacity: 1;
+            }
         }
     }
     .canvas {
@@ -106,6 +119,7 @@
     top: 0;
     z-index: 9;
     pointer-events: none;
+    overflow: hidden;
     h4 {
         font-size: var(--size-lg);
         margin-right: 0.3em;

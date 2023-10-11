@@ -1,3 +1,5 @@
+@import '../../../styles/core';
+
 .root {
   font-size: var(--size-sm);
   line-height: calc(var(--size-em) - 2px);
@@ -32,6 +34,10 @@
 
 .containerFlex {
   height: 100%;
+  @include md-down {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
 }
 
 .gridFlex {
@@ -40,6 +46,11 @@
   display: flex !important;
   flex-direction: column;
   justify-content: space-between;
+
+  @include md-down {
+    padding-right: var(--grid-gap);
+    padding-left: var(--grid-gap);
+  }
 }
 
 .socialMedia {
@@ -78,7 +89,16 @@
       svg {
         margin-right: 10px;
       }
+      span {
+        @include md-down {
+          display: none;
+        }
+      }
     }
+  }
+
+  @include md-down {
+    padding-top: 1em;
   }
 }
 

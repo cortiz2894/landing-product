@@ -9,6 +9,7 @@
 // import { gsap, Expo } from "https://cdn.skypack.dev/gsap@3.7.1";
 import {gsap, Expo } from 'gsap'
 import styles from './CursorDistorsion.module.scss'
+import cn from 'clsx'
 // React Imports
 import { useEffect, useLayoutEffect, useState, useRef, useCallback} from 'react'
 // Gsap Ticker Function
@@ -124,7 +125,7 @@ const CursorDistorsion = () => {
 
   // Return UI
   return (
-    <div className="container-div">
+    <div className={cn("container-div hide-on-mobile")}>
       <div ref={jellyRef} id={"jelly-id"} className={styles.jellyBlob}>
         <div ref={textRef} id={"text-id"} className={styles.insideText}>
           {/* Hey There, I'm Lil Blob */}

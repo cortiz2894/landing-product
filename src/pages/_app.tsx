@@ -5,6 +5,7 @@ import '@/styles/globals.scss'
 import { Provider } from 'react-wrap-balancer'
 import { useEffect } from 'react'
 import localFont from 'next/font/local'
+import { useRouter } from "next/router";
 
 // const kayakSans = localFont({
 //   fallback: ['system-ui', 'arial'],
@@ -39,6 +40,8 @@ const monument = localFont({
 })
 
 function App({ Component, pageProps, router }: AppProps) {
+  const { pathname } = useRouter();
+  
   useEffect(() => {
     // https://css-tricks.com/the-trick-to-viewport-units-on-mobile
     function onWindowResize() {
@@ -55,6 +58,13 @@ function App({ Component, pageProps, router }: AppProps) {
       window.removeEventListener('resize', onWindowResize, false)
     }
   }, [])
+  
+
+  useEffect(() => {
+    // some browsers (like safari) may require a timeout to delay calling this
+    // function after a page has loaded; otherwise, it may not update the position
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <div className={monument.className}>

@@ -1,6 +1,6 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, useProgress, Html } from "@react-three/drei";
-import React, { useRef, useLayoutEffect, useState} from 'react'
+import React, { useRef, useLayoutEffect, useState, useEffect} from 'react'
 import gsap from "gsap";
 import { animated } from "@react-spring/three";
 import * as THREE from "three";
@@ -20,6 +20,7 @@ function SceneTest(props) {
   const cylinder3 = useRef()
   const cylinder4 = useRef()
   const cylinder5 = useRef()
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 480)
 
   const [video] = useState(() => {
     const vid = document.createElement("video");
@@ -39,7 +40,11 @@ function SceneTest(props) {
         sh = 'scrollHeight';
     return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 2;
   }
-  
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 480)
+  }
+
+  window.addEventListener('resize', handleResize)
 
   useFrame(({ clock }, state)=> {
     
@@ -75,7 +80,6 @@ function SceneTest(props) {
   })
 
   useLayoutEffect( () => {
-
     tl.current = gsap.timeline({paused: !props.isHome})
     // VERTICAL ANIMATION
     tl.current.to(
@@ -147,19 +151,20 @@ function SceneTest(props) {
       keyboardRef.current.scale,
       {
         duration: 2.3,
-        y: 1.1,
-        x: 1.1,
-        z: 1.1
+        y: isMobile ? 1.1 : 0.9,
+        x: isMobile ? 1.1 : 0.9,
+        z: isMobile ? 1.1 : 0.9,
       },
       0.5
     )
-  
+    return () => window.removeEventListener('resize', handleResize)
+
   }, [])
 
   return (
     <group {...props} dispose={null} ref={ref} onPointerOver={() => {isHovered.current = true}}
     onPointerLeave={() => {isHovered.current = false;}}>
-      <group ref={keyboardRef}>
+      <group ref={keyboardRef} scale={isMobile ? 0.65 : 1}>
       <animated.mesh
         castShadow
         receiveShadow

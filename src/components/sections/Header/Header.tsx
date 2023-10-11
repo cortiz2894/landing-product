@@ -63,7 +63,7 @@ const Header: FC<Props> = ({stickyHeader = false, theme = 'dark', footerAppear})
                         </Link>
                       </div>
                     </div>
-                    <div className='span-4 start-9 d-flex items-center'>
+                    <div className='span-4 start-9 d-flex hide-on-mobile items-center'>
                       <div className={styles.infoHeader}>
                         <p className={styles.copy}>Embracing the legacy of sound exquisitely designed for tomorrow. </p>
                         <Link className={cn(styles.button, 'text-hover-effect')} href='/'>Let me know</Link>
