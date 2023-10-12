@@ -5,6 +5,9 @@
     padding-top: 95vh;
     position: relative;
     padding-bottom: 3em;
+    @include md-down {
+        padding-top: 60vh;
+    }
 }
 
 .blackScroll {

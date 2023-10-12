@@ -20,7 +20,6 @@ function SceneTest(props) {
   const cylinder3 = useRef()
   const cylinder4 = useRef()
   const cylinder5 = useRef()
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 480)
 
   const [video] = useState(() => {
     const vid = document.createElement("video");
@@ -40,14 +39,8 @@ function SceneTest(props) {
         sh = 'scrollHeight';
     return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 2;
   }
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 480)
-  }
-
-  window.addEventListener('resize', handleResize)
 
   useFrame(({ clock }, state)=> {
-    
     tl.current.seek(getScrollPercent() * tl.current.duration())
     
     // Rotation velocity
@@ -81,13 +74,14 @@ function SceneTest(props) {
 
   useLayoutEffect( () => {
     tl.current = gsap.timeline({paused: !props.isHome})
+    console.log('ref.current.position', ref.current.position, KEYBOARD_HEIGHT)
     // VERTICAL ANIMATION
     tl.current.to(
       ref.current.position, 
       {
-        duration: 2,
         y: KEYBOARD_HEIGHT * (NB_FLOORS -1.5),
-        x: KEYBOARD_HEIGHT * (1)
+        x: props.isMobile ? 0.5 : KEYBOARD_HEIGHT * (1),
+        duration: props.isMobile ? 0.5 : 2,
       },
       0
     )
@@ -102,8 +96,8 @@ function SceneTest(props) {
     .to(
       keyboardRef.current.rotation,
       {
-        duration: 2.3,
-        z: -Math.PI / 4.2
+        duration: props.isMobile ? 0.75 : 2.3,
+        z: props.isMobile ? 0 : -Math.PI / 4.2,
       },
       0
     )
@@ -150,21 +144,25 @@ function SceneTest(props) {
     .to(
       keyboardRef.current.scale,
       {
-        duration: 2.3,
-        y: isMobile ? 1.1 : 0.9,
-        x: isMobile ? 1.1 : 0.9,
-        z: isMobile ? 1.1 : 0.9,
+        duration: props.isMobile ? 0.5 :2.3,
+        y: props.isMobile ? 0.6 : 1.1 ,
+        x: props.isMobile ? 0.6 : 1.1,
+        z: props.isMobile ? 0.6 : 1.1,
       },
       0.5
     )
-    return () => window.removeEventListener('resize', handleResize)
 
   }, [])
 
   return (
     <group {...props} dispose={null} ref={ref} onPointerOver={() => {isHovered.current = true}}
     onPointerLeave={() => {isHovered.current = false;}}>
-      <group ref={keyboardRef} scale={isMobile ? 0.65 : 1}>
+      <group 
+        ref={keyboardRef} 
+        scale={props.isMobile ? 0.8 : 1} 
+        position={props.isMobile ? [-0.5,0,-1] : [0,0,0]}
+        rotation={props.isMobile ? [0, 0, 7.1] : [0, 0, 0]}
+      >
       <animated.mesh
         castShadow
         receiveShadow
@@ -447,7 +445,7 @@ function Rig() {
   })
 }
 
-export default function KeyboardScene({position = [-Math.PI / -2, 0, 0], autoRotate = false, isHome = false}) {
+export default function KeyboardScene({position = [-Math.PI / -2, 0, 0], autoRotate = false, isHome = false, isMobile = false}) {
   
   return (
     <Canvas >
@@ -456,8 +454,8 @@ export default function KeyboardScene({position = [-Math.PI / -2, 0, 0], autoRot
 
 </ScrollControls> */}
       <directionalLight position={[1, 2.0, 4.4]} intensity={0.6} />
-      <SceneTest rotation={position} scale={1} autoRotate={autoRotate} isHome={isHome}/>
-      <Rig />
+      <SceneTest rotation={position} scale={1} autoRotate={autoRotate} isHome={isHome} isMobile={isMobile}/>
+      {!isMobile && <Rig />}
     </Canvas>
     
   );

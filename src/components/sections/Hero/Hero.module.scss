@@ -76,6 +76,10 @@
     width: 100%;
     top: 111vh;
     z-index: 1;
+
+    @include md-down {
+        top: 98vh;
+    }
 }
 
 .fixed {

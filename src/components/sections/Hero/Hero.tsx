@@ -14,11 +14,19 @@ const Hero: FC<Props> = ({stopMove}) => {
   const [showAnimation, setShowAnimation] = useState<boolean>(false)
   const [hasScrolled, setHasScrolled] = useState(false)
   const [disableModelScroll, setDisableModelScroll] = useState<boolean>(false)
+  const [isMobile, setIsMobile] = useState<boolean>(false)
   const $ref = useRef<HTMLDivElement | null>(null)
   const containerText = useRef<HTMLDivElement | null>(null)
   const lenis = useLenis(({ scroll }: { scroll: number }) => {
     setHasScrolled(scroll > 0)
   })
+  const handleResize = () => {
+    if (typeof window !== "undefined") {
+      // Client-side-only code
+      setIsMobile(window.innerWidth < 480)
+    }
+  }
+
 
   useIsomorphicLayoutEffect(() => {
     if (!lenis || showAnimation ) return
@@ -28,6 +36,11 @@ const Hero: FC<Props> = ({stopMove}) => {
 
   //Letters Background Animation
   useIsomorphicLayoutEffect(() => {
+
+    setIsMobile(window.innerWidth < 480)
+    window.addEventListener('resize', handleResize)
+
+    
     const container = $ref.current
     if (!container || !showAnimation ) return    
     const letter = gsap.utils.toArray(container.querySelectorAll('h2'))      
@@ -72,6 +85,7 @@ const Hero: FC<Props> = ({stopMove}) => {
     window.addEventListener("scroll", checkPassHero);
     return () => {
       window.removeEventListener("scroll", checkPassHero);
+      window.removeEventListener('resize', handleResize)
 
     }
   }, [showAnimation, hasScrolled])
@@ -136,7 +150,7 @@ useIsomorphicLayoutEffect(() => {
           <h4>HiKeys</h4>
         </div>
         <div className={cn(styles.canvas, !stopMove && !disableModelScroll ? styles.fixed : '', 'gltb-canvas')}>
-          <KeyboardScene isHome={true}/>
+          <KeyboardScene isHome={true} isMobile={isMobile}/>
         </div>
         <div className={styles.backgroundText} ref={$ref}>
           <div>
