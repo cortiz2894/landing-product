@@ -88,7 +88,7 @@ function SceneTest(props) {
     .to(
       '#presentation',
       {
-        duration: props.isMobile ? 5 : 2.5,
+        duration: 5,
         y: -400,
       },
       0
