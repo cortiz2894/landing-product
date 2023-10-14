@@ -81,15 +81,15 @@ function SceneTest(props) {
       {
         y: KEYBOARD_HEIGHT * (NB_FLOORS -1.5),
         x: props.isMobile ? 0.5 : KEYBOARD_HEIGHT * (1),
-        duration: props.isMobile ? 0.5 : 2,
+        duration: props.isMobile ? 0.1 : 2,
       },
-      0
+      props.isMobile ? '<=+0.29' : 0
     )
     .to(
       '#presentation',
       {
-        duration: 2.5,
-        y: -400
+        duration: props.isMobile ? 5 : 2.5,
+        y: -400,
       },
       0
     )
@@ -99,7 +99,7 @@ function SceneTest(props) {
         duration: props.isMobile ? 0.75 : 2.3,
         z: props.isMobile ? 0 : -Math.PI / 4.2,
       },
-      0
+      props.isMobile ? 0.3 : 0
     )
     .to(
       cylinder.current.rotation,
@@ -149,7 +149,7 @@ function SceneTest(props) {
         x: props.isMobile ? 0.6 : 1.1,
         z: props.isMobile ? 0.6 : 1.1,
       },
-      0.5
+      props.isMobile ? '<=+0.2' : 0.5
     )
 
   }, [])

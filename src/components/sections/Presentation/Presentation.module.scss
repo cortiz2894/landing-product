@@ -6,13 +6,13 @@
     position: relative;
     padding-bottom: 3em;
     @include md-down {
-        padding-top: 60vh;
+        padding-top: 25em;
     }
 }
 
 .blackScroll {
     width: 100%;
-    height: 50vh;
+    height: 20em;
     background: black;
     top: 0;
     position: absolute;
