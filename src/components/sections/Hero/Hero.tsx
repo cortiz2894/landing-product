@@ -140,6 +140,11 @@ useIsomorphicLayoutEffect(() => {
     ease: "power2.inOut",
     onComplete: () => { setShowAnimation(true )}
   },'>-0.5')
+  .fromTo('.container-div', {
+    opacity: 0
+  }, {
+    opacity: 1
+  })
 }, [])
 
     return (
