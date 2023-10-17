@@ -2,6 +2,7 @@ import { FC, useRef, useState } from 'react'
 import cn from 'clsx'
 import styles from './Hero.module.scss'
 import KeyboardScene  from '../../shared/SceneTest/SceneTest'
+import KeyboardRealScene from '../../shared/SceneKeyboard/SceneKeyboard'
 import { Lenis, useLenis } from '@studio-freight/react-lenis'
 import { useIsomorphicLayoutEffect } from 'usehooks-ts'
 import { gsap } from '@/utils/gsap'
@@ -155,7 +156,8 @@ useIsomorphicLayoutEffect(() => {
           <h4>HiKeys</h4>
         </div>
         <div className={cn(styles.canvas, !stopMove && !disableModelScroll ? styles.fixed : '', 'gltb-canvas')}>
-          <KeyboardScene isHome={true} isMobile={isMobile}/>
+          {/* <KeyboardScene isHome={true} isMobile={isMobile}/> */}
+          <KeyboardRealScene isHome={true} isMobile={isMobile}/>
         </div>
         <div className={styles.backgroundText} ref={$ref}>
           <div>
